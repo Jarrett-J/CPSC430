@@ -1,0 +1,5 @@
+Press 'A' to drive left, and 'D' to drive right.
+
+Press spacebar to spawn a new car.
+
+Click a vehicle to change its type.

@@ -6,7 +6,6 @@ from PIL.Image import open
 class ObjectVehicle(ViewObject):
     
     def load_texture(self):
-        print("loading texture")
         metalImage = open("metal.jpg")
     
         ix = metalImage.size[0]

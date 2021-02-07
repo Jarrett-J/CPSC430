@@ -19,11 +19,8 @@ class GameObjectDrive(GameObject):
             self.tire_rotation -= 6
             
     def clicked(self):
-        print("clicked " + self.kind)
         if self.kind == "car":
-            print("turning car into truck")
             self.kind = "truck"
             
         elif self.kind == "truck":
-            print("turning truck into car")
             self.kind = "car"        

@@ -6,6 +6,9 @@ class ViewObject:
         self.game_object = game_object
         self.load_texture()
         
+    def update_text(self):
+        pass
+    
     def load_texture(self):
         pass
         

@@ -6,6 +6,7 @@ class GameObjectDrive(GameObject):
     def __init__(self, position, kind, id):
         super(GameObjectDrive, self).__init__(position, kind, id)
         self.tire_rotation = 0;
+        self.text = "Car"
         
     def tick(self):
         keys = pygame.key.get_pressed()
@@ -21,6 +22,8 @@ class GameObjectDrive(GameObject):
     def clicked(self):
         if self.kind == "car":
             self.kind = "truck"
+            self.text = "Truck"
             
         elif self.kind == "truck":
-            self.kind = "car"        
+            self.kind = "car"
+            self.text = "Car"

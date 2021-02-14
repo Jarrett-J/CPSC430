@@ -38,6 +38,7 @@ class GameLogic:
     # Put game objects to spawn here
     def load_world(self):
         self.create_driving_object([0, 0, -10], "vehicle")
+        #self.create_object([0, 0, -5], "cube")
 
     def get_property(self, key):
         if key in self.properties:

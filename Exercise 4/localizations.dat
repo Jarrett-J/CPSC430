@@ -1,0 +1,12 @@
+{
+    "en": {
+        "Vehicles: ": "Vehicles: ",
+		"Car": "Car",
+		"Truck": "Truck"
+    },
+    "es": {
+        "Vehicles: ": "Vehiculos: ",
+        "Car": "Coche",
+		"Truck": "Camion"
+    }
+}

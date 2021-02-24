@@ -7,19 +7,22 @@ class GameObjectDrive(GameObject):
         super(GameObjectDrive, self).__init__(position, kind, id)
         self.tire_rotation = 0;
         self.text = "Car"
+        self.driveEnabled = False
         
     def tick(self):
         keys = pygame.key.get_pressed()
         
-        if keys[K_a]:          
-            self.position = [self.position[0] - 0.09, self.position[1], self.position[2]]
-            self.tire_rotation += 6
-            
-        elif keys[K_d]:
-            self.position = [self.position[0] + 0.09, self.position[1], self.position[2]]
-            self.tire_rotation -= 6
+        if (self.driveEnabled):
+            if keys[K_a]:          
+                self.position = [self.position[0] - 0.09, self.position[1], self.position[2]]
+                self.tire_rotation += 6
+                
+            elif keys[K_d]:
+                self.position = [self.position[0] + 0.09, self.position[1], self.position[2]]
+                self.tire_rotation -= 6
             
     def clicked(self):
+        print("Clicked vehicle")
         if self.kind == "car":
             self.kind = "truck"
             self.text = "Truck"

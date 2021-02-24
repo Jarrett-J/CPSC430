@@ -36,7 +36,7 @@ class ObjectVehicle(ViewObject):
         
         glEnable(GL_TEXTURE_2D);
         
-        
+        """
         light_ambient = [0.5, 0.5, 0.5, 1.0]
         light_diffuse = [1.0, 1.0, 1.0, 1.0]
         light_position = [0.0, 1.0, 1.0, 1.0]
@@ -52,6 +52,7 @@ class ObjectVehicle(ViewObject):
         
         glDepthFunc(GL_LESS)
         glEnable(GL_DEPTH_TEST)
+        """
         
     def update_text(self):
         self.load_text()

@@ -3,3 +3,5 @@ WASD to move
 Move the mouse to look around
 
 Click to interact with objects
+
+Space to jump

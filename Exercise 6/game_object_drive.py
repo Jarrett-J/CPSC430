@@ -3,8 +3,8 @@ import pygame
 from pygame.locals import *
 
 class GameObjectDrive(GameObject):
-    def __init__(self, position, kind, id):
-        super(GameObjectDrive, self).__init__(position, kind, id)
+    def __init__(self, position, size, kind, id):
+        super(GameObjectDrive, self).__init__(position, size, kind, id)
         self.tire_rotation = 0;
         self.text = "Car"
         self.driveEnabled = False

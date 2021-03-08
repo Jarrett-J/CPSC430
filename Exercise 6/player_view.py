@@ -21,8 +21,8 @@ class PlayerView:
         self.game_logic = game_logic
         self.view_objects = {}
         self.paused = False
-        self.camera_angle = 0.0
-
+        self.player = None
+        self.clock = pygame.time.Clock()
         # receive event
         pub.subscribe(self.new_game_object, 'create')
 
@@ -70,32 +70,28 @@ class PlayerView:
 
         if not self.paused:
             self.prepare_3d()
-
             keypress = pygame.key.get_pressed()
-
-            self.camera_angle += mouseMove[1] * 0.1
-            glRotatef(self.camera_angle, 1.0, 0.0, 0.0)
-
-            glPushMatrix()
-            glLoadIdentity()
-
-            speed = 0.2
+            
             if keypress[pygame.K_w]:
-                glTranslatef(0, 0, speed)
+                pub.sendMessage('key-w')
             if keypress[pygame.K_s]:
-                glTranslatef(0, 0, -speed)
+                pub.sendMessage('key-s')
             if keypress[pygame.K_d]:
-                glTranslatef(-speed, 0, 0)
+                pub.sendMessage('key-d')
             if keypress[pygame.K_a]:
-                glTranslatef(speed, 0, 0)
+                pub.sendMessage('key-a')
+            if keypress[pygame.K_SPACE]:
+                pub.sendMessage('key-space')
+                
+            pub.sendMessage('rotate-y', amount=mouseMove[0])
+            pub.sendMessage('rotate-x', amount=mouseMove[1])
 
-            glRotatef(mouseMove[0] * 0.1, 0.0, 1.0, 0.0)
+            if self.player:
+                glRotate(self.player.x_rotation, 1.0, 0.0, 0.0)
+                glRotate(self.player.y_rotation, 0.0, 1.0, 0.0)
+                glTranslate(-self.player.position[0], -self.player.position[1], -self.player.position[2])
+                self.viewMatrix = glGetFloatv(GL_MODELVIEW_MATRIX)
 
-            glMultMatrixf(self.viewMatrix)
-            self.viewMatrix = glGetFloatv(GL_MODELVIEW_MATRIX)
-
-            glPopMatrix()
-            glMultMatrixf(self.viewMatrix)
 
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
             glPushMatrix()
@@ -106,7 +102,9 @@ class PlayerView:
             
             self.render_hud()
             pygame.display.flip()
-            pygame.time.wait(10)
+            
+            # fps
+            self.clock.tick(60)
 
     def prepare_3d(self):
         glViewport(0, 0, self.window_width, self.window_height)
@@ -229,6 +227,9 @@ class PlayerView:
 
         elif game_object.kind == "move":
             self.view_objects[game_object.id] = CubeView(game_object)
+            
+        elif game_object.kind == "player":
+            self.player = game_object
 
         print(game_object.kind)
 

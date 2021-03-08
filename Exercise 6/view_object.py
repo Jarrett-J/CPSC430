@@ -21,6 +21,8 @@ class ViewObject:
         glRotatef(self.game_object.y_rotation, 0, 1, 0)
         glRotatef(self.game_object.z_rotation, 0, 0, 1)
         
+        glScale(*self.game_object.size)
+        
         glPushName(self.game_object.id)
         self.draw()
         

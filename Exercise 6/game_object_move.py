@@ -2,8 +2,8 @@ from game_object import GameObject
 
 
 class GameObjectMove(GameObject):
-    def __init__(self, position, kind, id):
-        super(GameObjectMove, self).__init__(position, kind, id)
+    def __init__(self, position, size, kind, id):
+        super(GameObjectMove, self).__init__(position, size, kind, id)
         self.can_move = False
         self.move_left = True
         self.move_amt = 0

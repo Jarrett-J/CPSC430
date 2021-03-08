@@ -55,20 +55,72 @@ class ObjectWall(ViewObject):
         glPopMatrix()
         
     def wall(self):
-        scale = 5
+        scale = 1
         glBegin(GL_QUADS)
-        glNormal3f(0.0, 1.0, 0.0)
+        
+        # front
+        glNormal3f(0.0, 0.0, 1.0)
         
         glTexCoord2f(1.0, 0.0)
-        glVertex3d(-1.0 * scale, 1.0 * scale, 0.0 * scale)
+        glVertex3d(-1.0 * scale, 1.0 * scale, 1 * scale)
         
         glTexCoord2f(0.0, 0.0)
-        glVertex3d(-1.0 * scale, -1.0 * scale, 0.0 * scale)
+        glVertex3d(-1.0 * scale, -1.0 * scale, 1 * scale)
         
         glTexCoord2f(0.0, 1.0)
-        glVertex3d(1.0 * scale, -1.0 * scale, 0.0 * scale)
+        glVertex3d(1.0 * scale, -1.0 * scale, 1 * scale)
         
         glTexCoord2f(1.0, 1.0)
-        glVertex3d(1.0 * scale, 1.0 * scale, 0.0 * scale)
+        glVertex3d(1.0 * scale, 1.0 * scale, 1 * scale)
         
         glEnd()
+        
+        # Left face
+        glBegin(GL_QUADS)
+        glNormal3f( -1.0, 0.0, 0.0)
+        glVertex3d(-1.0, 1.0, 1.0)
+        glVertex3d(-1.0, -1.0, 1.0)
+        glVertex3d(-1.0, -1.0, -1.0)
+        glVertex3d(-1.0, 1.0, -1.0)
+        glEnd()
+        
+        # Back face
+        glBegin(GL_QUADS)
+        glNormal3f( 0.0, 0.0, -1.0)
+        glTexCoord2f(1.0, 1.0)
+        glVertex3d(-1.0, 1.0, -1.0)
+        glTexCoord2f(1.0, 0.0)
+        glVertex3d(-1.0, -1.0, -1.0)
+        glTexCoord2f(0.0, 0.0)
+        glVertex3d(1.0, -1.0, -1.0)
+        glTexCoord2f(0.0, 1.0)
+        glVertex3d(1.0, 1.0, -1.0)
+        glEnd()
+        
+        # Right face
+        glBegin(GL_QUADS)
+        glNormal3f( 1.0, 0.0, 0.0)
+        glVertex3d(1.0, 1.0, 1.0)
+        glVertex3d(1.0, -1.0, 1.0)
+        glVertex3d(1.0, -1.0, -1.0)
+        glVertex3d(1.0, 1.0, -1.0)
+        glEnd()
+        
+        # Top face
+        glBegin(GL_QUADS)
+        glNormal3f( 0.0, 1.0, 0.0)
+        glVertex3d(-1.0, 1.0, 1.0)
+        glVertex3d(1.0, 1.0, 1.0)
+        glVertex3d(1.0, 1.0, -1.0)
+        glVertex3d(-1.0, 1.0, -1.0)
+        glEnd()
+        
+        # Bottom face
+        glBegin(GL_QUADS)
+        glNormal3f( 0.0, -1.0, 0.0)
+        glVertex3d(-1.0, -1.0, 1.0)
+        glVertex3d(1.0, -1.0, 1.0)
+        glVertex3d(1.0, -1.0, -1.0)
+        glVertex3d(-1.0, -1.0, -1.0)
+        glEnd()
+        glDisable(GL_TEXTURE_2D)

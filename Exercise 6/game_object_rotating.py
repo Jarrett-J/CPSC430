@@ -1,8 +1,8 @@
 from game_object import GameObject
 
 class GameObjectRotating(GameObject):
-    def __init__(self, position, kind, id):
-        super(GameObjectRotating, self).__init__(position, kind, id)
+    def __init__(self, position, size, kind, id):
+        super(GameObjectRotating, self).__init__(position, size, kind, id)
         self.allow_rotation = True
         self.rotation_speed = 0
         

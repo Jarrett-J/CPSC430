@@ -1,12 +1,22 @@
 class GameObject:
-    def __init__(self, position, kind, id):
+    def __init__(self, position, size, kind, id):
         self.position = position
         self.kind = kind
+        self.size = size
         self.id = id
         self._x_rotation = 0
         self._y_rotation = 0
         self._z_rotation = 0
         
+        self.behaviors = []
+        
+        self.collisions = []
+        self._moved = False
+    
+    @property
+    def moved(self):
+        return self._moved
+    
     # string
     @property
     def kind(self):
@@ -15,6 +25,14 @@ class GameObject:
     @kind.setter
     def kind(self, value):
         self._kind = value
+    
+    @property
+    def size(self):
+        return self._size
+    
+    @size.setter
+    def size(self, value):
+        self._size = value
         
     # int
     @property
@@ -57,9 +75,18 @@ class GameObject:
     @z_rotation.setter
     def z_rotation(self, value):
         self._z_rotation = value
+        
+    def add_behavior(self, behavior):
+        self.behaviors.append(behavior)
+        behavior.connect(self)
     
     def tick(self):
-        pass
+        for behavior in self.behaviors:
+            behavior.tick()
+            
+        self.collisions = []
+        self._moved = False
     
     def clicked(self):
-        pass
+        for behavior in self.behaviors:
+            behavior.clicked()

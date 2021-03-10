@@ -4,18 +4,10 @@ from game_object_drive import GameObjectDrive
 from game_object_ground import GameObjectGround
 from game_object_move import GameObjectMove
 from player import Player
-from behavior_x_rotation import XRotation
-from behavior_y_rotation import YRotation
-from behavior_z_rotation import ZRotation
-from behavior_key_move import KeyMove
-from behavior_mouse_rotation import MouseRotation
-from behavior_collision import BlockedByObjects
-from behavior_move_on_click import MoveOnClick
-from behavior_enemy_health import EnemyHealth
-from behavior_jump import CanJump
-from behavior_rotate_on_click import RotateOnClick
 from pubsub import pub
 import numpy
+import json
+import importlib
 
 class GameLogic:
     def __init__(self):
@@ -66,96 +58,34 @@ class GameLogic:
         del self._game_objects[id]
 
     # Put game objects to spawn here
-    def load_world(self):
-        player = self.create_object([0, 0, 0], [1, 1, 1], "player")
-        cube = self.create_object([-2, 0, -10], [1, 1, 1], "cube")
-        moveCube = self.create_object([2, 0, -10], [1, 1, 1,], "move")
-        enemyCube = self.create_object([5, 0, -10], [1, 1, 1,], "cube")
+    def load_world(self, filename):
+        # send event to view to delete game objects
+        self.game_objects = { }
         
-        enemyCube.add_behavior(EnemyHealth(20))
-        player.add_behavior(KeyMove(0.1))
-        player.add_behavior(MouseRotation(0.1))
-        player.add_behavior(BlockedByObjects())
-        player.add_behavior(CanJump(0.2))
-        cube.add_behavior(ZRotation(0.5))
-        cube.add_behavior(RotateOnClick())
-        moveCube.add_behavior(MoveOnClick([0, .1, 0]))
+        with open(filename) as infile:
+            level_data = json.load(infile)
+            
+            if not 'objects' in level_data:
+                return False
+            
+            for game_object in level_data['objects']:
+                size = [1.0, 1.0, 1.0]
+                if 'size' in game_object:
+                    size = game_object['size']
+                    
+                obj = self.create_object(game_object['position'], size, game_object['kind'])
         
-        #self.create_object([-10, 0, -5], [1.0, 1.0, 1.0], "vehicle", GameObjectDrive)
+                if 'behaviors' not in game_object:
+                    continue
+                
+                for behavior in game_object['behaviors']:
+                    module = importlib.import_module(level_data['behaviors'][behavior])
+                    class_ = getattr(module, behavior)
+                    instance = class_(*game_object['behaviors'][behavior])
+                    
+                    obj.add_behavior(instance)
 
-        # ground
-        self.create_object([0, 0, 0], [1.0, 1.0, 1.0], "ground")
-        self.create_object([0, 0, -10], [1.0, 1.0, 1.0], "ground")
-        self.create_object([0, 0, 10], [1.0, 1.0, 1.0], "ground")
 
-        self.create_object([10, 0, 0], [1.0, 1.0, 1.0], "ground")
-        self.create_object([10, 0, -10], [1.0, 1.0, 1.0], "ground")
-        self.create_object([10, 0, 10], [1.0, 1.0, 1.0], "ground")
-
-        self.create_object([-10, 0, 0], [1.0, 1.0, 1.0], "ground")
-        self.create_object([-10, 0, -10], [1.0, 1.0, 1.0], "ground")
-        self.create_object([-10, 0, 10], [1.0, 1.0, 1.0], "ground")
-
-        self.create_object([-20, 0, 0], [1.0, 1.0, 1.0], "ground")
-        self.create_object([-20, 0, -10], [1.0, 1.0, 1.0], "ground")
-        self.create_object([-20, 0, 10], [1.0, 1.0, 1.0], "ground")
-
-        self.create_object([20, 0, 0], [1.0, 1.0, 1.0], "ground")
-        self.create_object([20, 0, -10], [1.0, 1.0, 1.0], "ground")
-        self.create_object([20, 0, 10], [1.0, 1.0, 1.0], "ground")
-
-        # ceiling
-        self.create_object([0, 10, 0], [1.0, 1.0, 1.0], "ground")
-        self.create_object([0, 10, -10], [1.0, 1.0, 1.0], "ground")
-        self.create_object([0, 10, 10], [1.0, 1.0, 1.0], "ground")
-
-        self.create_object([10, 10, 0], [1.0, 1.0, 1.0], "ground")
-        self.create_object([10, 10, -10], [1.0, 1.0, 1.0], "ground")
-        self.create_object([10, 10, 10], [1.0, 1.0, 1.0], "ground")
-
-        self.create_object([-10, 10, 0], [1.0, 1.0, 1.0], "ground")
-        self.create_object([-10, 10, -10], [1.0, 1.0, 1.0], "ground")
-        self.create_object([-10, 10, 10], [1.0, 1.0, 1.0], "ground")
-
-        self.create_object([-20, 10, 0], [1.0, 1.0, 1.0], "ground")
-        self.create_object([-20, 10, -10], [1.0, 1.0, 1.0], "ground")
-        self.create_object([-20, 10, 10], [1.0, 1.0, 1.0], "ground")
-
-        self.create_object([20, 10, 0], [1.0, 1.0, 1.0], "ground")
-        self.create_object([20, 10, -10], [1.0, 1.0, 1.0], "ground")
-        self.create_object([20, 10, 10], [1.0, 1.0, 1.0], "ground")
-
-        x = 5
-        y = 5
-        z = 5
-        
-        
-        # walls
-        
-        self.create_object([20, -1, 15], [x, y, z], "wall")
-        self.create_object([10, -1, 15], [x, y, z], "wall")
-        self.create_object([0, -1, 15], [x, y, z], "wall")
-        self.create_object([-10, -1, 15], [x, y, z], "wall")
-        self.create_object([-20, -1, 15], [x, y, z], "wall")
-        
-        
-        self.create_object([20, -1, -15], [x, y, z], "wall")
-        self.create_object([10, -1, -15], [x, y, z], "wall")
-        self.create_object([0, -1, -15], [x, y, z], "wall")
-        self.create_object([-10, -1, -15], [x, y, z], "wall")
-        self.create_object([-20, -1, -15], [x, y, z], "wall")
-        
-        
-        # side walls
-        self.create_object([25, -1, 10], [1.0, 1.0, 1.0], "sidewall")
-        self.create_object([25, -1, 0], [1.0, 1.0, 1.0], "sidewall")
-        self.create_object([25, -1, -10], [1.0, 1.0, 1.0], "sidewall")
-
-        self.create_object([-25, -1, 10], [1.0, 1.0, 1.0], "sidewall")
-        self.create_object([-25, -1, 0], [1.0, 1.0, 1.0], "sidewall")
-        self.create_object([-25, -1, -10], [1.0, 1.0, 1.0], "sidewall")
-        
-        
     def get_property(self, key):
         if key in self.properties:
             return self.properties[key]

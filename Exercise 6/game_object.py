@@ -81,11 +81,13 @@ class GameObject:
         behavior.connect(self)
     
     def tick(self):
+        self._moved = False
+        
         for behavior in self.behaviors:
             behavior.tick()
             
         self.collisions = []
-        self._moved = False
+        
     
     def clicked(self):
         for behavior in self.behaviors:

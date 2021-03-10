@@ -10,8 +10,7 @@ class Main:
         self.instances.append(PlayerView(self.game_logic))
     
     def go(self):
-        # let gameobject load world
-        self.game_logic.load_world()
+        self.game_logic.load_world("level_1.txt")
         
         while True:
             for instance in self.instances:

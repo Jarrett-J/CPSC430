@@ -1,5 +1,7 @@
 class GameObject:
     def __init__(self, position, size, kind, id):
+        self.properties = {}
+
         self.position = position
         self.kind = kind
         self.size = size
@@ -88,7 +90,15 @@ class GameObject:
             
         self.collisions = []
         
+    def get_property(self, key, default=None):
+        if key in self.properties:
+            return self.properties[key]
+        
+        return default
     
+    def set_property(self, key, value):
+        self.properties[key] = value
+            
     def clicked(self):
         for behavior in self.behaviors:
             behavior.clicked()

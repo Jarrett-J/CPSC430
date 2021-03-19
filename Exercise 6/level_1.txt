@@ -1,49 +1,32 @@
 {
      "objects": [
-         { "kind": "player", "position": [0.0, 0.0, 0.0], "behaviors": { "KeyMove" : [0.1], "MouseRotation": [0.1], "BlockedByObjects": [], "CanJump": [0.2] } },
+         { "kind": "player", "position": [0.0, 3.0, 0.0], "behaviors": { "KeyMove" : [0.1], "MouseRotation": [0.1], "BlockedByObjects": [], "CanJump": [0.2], "Gravity": [0.1] } },
          {"kind": "cube", "position": [0.0, 0.0, -15.0], "size": [2.0, 2.0, 2.0] },
 		 
-		 {"kind": "ground", "position": [0, 0, 0], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [0, 0, -10], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [0, 0, 10], "size": [1, 1, 1]},
+		 {"kind": "cube", "position": [0.0, -50.0, 0.0], "size": [10.0, 10.0, 10.0] },
+		 {"kind": "cube", "position": [15.0, -50.0, 0.0], "size": [10.0, 10.0, 10.0] },
+		 {"kind": "cube", "position": [-15.0, -50.0, 0.0], "size": [10.0, 10.0, 10.0] },
 		 
-		 {"kind": "ground", "position": [10, 0, 0], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [10, 0, -10], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [10, 0, 10], "size": [1, 1, 1]},
+		 {"kind": "ground", "position": [0, -10, 0], "size": [5, 5, 5]},
+		 {"kind": "ground", "position": [0, -10, -10], "size": [5, 5, 5]},
+		 {"kind": "ground", "position": [0, -10, 10], "size": [5, 5, 5]},
 		 
-		 {"kind": "ground", "position": [-10, 0, 0], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [-10, 0, -10], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [-10, 0, 10], "size": [1, 1, 1]},
+		 {"kind": "ground", "position": [10, -10, 0], "size": [5, 5, 5]},
+		 {"kind": "ground", "position": [10, -10, -10], "size": [5, 5, 5]},
+		 {"kind": "ground", "position": [10, -10, 10], "size": [5, 5, 5]},
 		 
-		 {"kind": "ground", "position": [-20, 0, 0], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [-20, 0, -10], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [-20, 0, 10], "size": [1, 1, 1]},
+		 {"kind": "ground", "position": [-10, -10, 0], "size": [5, 5, 5]},
+		 {"kind": "ground", "position": [-10, -10, -10], "size": [5, 5, 5]},
+		 {"kind": "ground", "position": [-10, -10, 10], "size": [5, 5, 5]},
 		 
-		 {"kind": "ground", "position": [20, 0, 0], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [20, 0, -10], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [20, 0, 10], "size": [1, 1, 1]},
+		 {"kind": "ground", "position": [-20, -10, 0], "size": [5, 5, 5]},
+		 {"kind": "ground", "position": [-20, -10, -10], "size": [5, 5, 5]},
+		 {"kind": "ground", "position": [-20, -10, 10], "size": [5, 5, 5]},
 		 
+		 {"kind": "ground", "position": [20, -10, 0], "size": [5, 5, 5]},
+		 {"kind": "ground", "position": [20, -10, -10], "size": [5, 5, 5]},
+		 {"kind": "ground", "position": [20, -10, 10], "size": [5, 5, 5]},
 		 
-
-		 {"kind": "ground", "position": [0, 10, 0], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [0, 10, -10], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [0, 10, 10], "size": [1, 1, 1]},
-		 
-		 {"kind": "ground", "position": [10, 10, 0], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [10, 10, -10], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [10, 10, 10], "size": [1, 1, 1]},
-		 
-		 {"kind": "ground", "position": [-10, 10, 0], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [-10, 10, -10], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [-10, 10, 10], "size": [1, 1, 1]},
-		 
-		 {"kind": "ground", "position": [-20, 10, 0], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [-20, 10, -10], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [-20, 10, 10], "size": [1, 1, 1]},
-		 
-		 {"kind": "ground", "position": [20, 10, 0], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [20, 10, -10], "size": [1, 1, 1]},
-		 {"kind": "ground", "position": [20, 10, 10], "size": [1, 1, 1]},
 		 
 		 
 		 {"kind": "wall", "position": [20, -1, 15], "size": [5, 5, 5]},
@@ -76,7 +59,8 @@
         "CanJump": "behavior_jump",
         "XRotation": "behavior_x_rotation",
         "YRotation": "behavior_y_rotation",
-        "ZRotation": "behavior_z_rotation"
+        "ZRotation": "behavior_z_rotation",
+		"Gravity": "behavior_gravity"
      }
          
      

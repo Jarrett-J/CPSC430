@@ -86,11 +86,11 @@ class GameLogic:
                     obj.add_behavior(instance)
 
 
-    def get_property(self, key):
+    def get_property(self, key, default=None):
         if key in self.properties:
             return self.properties[key]
-
-        return None
+        
+        return default
 
     def set_property(self, key, value):
         self.properties[key] = value

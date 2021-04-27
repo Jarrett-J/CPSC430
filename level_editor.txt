@@ -1,0 +1,66 @@
+{
+    "behaviors": {
+        "BlockedByObjects": "behavior_collision",
+        "Disappear": "behavior_disappear",
+        "EnemyHealth": "behavior_enemy_health",
+        "Goto": "behavior_goto",
+        "GotoSupervisor": "behavior_goto_sup",
+        "Gravity": "behavior_gravity",
+        "Jump": "behavior_jump",
+        "KeyFly": "behavior_key_fly",
+        "KeyMove": "behavior_key_move",
+        "MouseRotation": "behavior_mouse_rotation",
+        "Pickup": "behavior_pickup",
+        "Platform": "behavior_platform",
+        "Switch": "behavior_switch",
+        "XRotation": "behavior_x_rotation",
+        "YRotation": "behavior_y_rotation",
+        "ZRotation": "behavior_z_rotation",
+        "RandomGroundMovement": "behavior_random_ground_movement",
+        "Spawn": "behavior_spawn",
+        "Item": "behavior_item",
+        "Shotgun": "behavior_shotgun",
+        "Projectile": "behavior_projectile",
+        "PlayerHealth": "behavior_player_health",
+        "DestroyOnCollision": "behavior_destroy_on_collision",
+        "Melee": "behavior_melee",
+        "Pistol": "behavior_pistol",
+        "GotoLastPosition": "behavior_goto_last_position"
+    },
+    "files": {
+        "wall": "images/wall.jpg",
+        "floor": "images/floor.jpg",
+        "shotgun-shoot": "sounds/shotgun-shoot.wav",
+        "enemy-hit-1": "sounds/enemy-hit-1.wav",
+        "empty-gun": "sounds/empty-gun.wav",
+        "player-oof": "sounds/player-oof.wav",
+        "pistol-shoot": "sounds/pistol-shoot.wav",
+        "ammo-pickup": "sounds/ammo-pickup.wav",
+        "punch": "sounds/punch.wav"
+    },
+    "level": {
+        "music": "bgmusic"
+    },
+    "objects": [
+        {"kind": "player", "position": [6.626233943956259, 0.05062412418192608, 1.393571835668936], "size": [1.0, 1.0, 1.0], "name": "player", "behaviors": {"BlockedByObjects": [], "Gravity": [0.1], "Jump": [0.5, 0.05], "KeyMove": [0.1], "MouseRotation": [0.1], "Shotgun": ["shotgun-shoot", "empty-gun"], "Pistol": ["pistol-shoot", "empty-gun"], "Melee": ["punch"], "PlayerHealth": [100, "player-oof"]}},
+
+        {"kind": "wall", "position": [0, 2, 0], "size": [1, 1, 1], "faces": {"top": {"type": "texture", "value": "floor"}, "back": {"type": "texture", "value": "floor"}, "left": {"type": "texture", "value": "floor"},
+        "right": {"type": "texture", "value": "floor"}, "front": {"type": "texture", "value": "floor"},
+        "bottom": {"type": "texture", "value": "floor"}},
+        "behaviors": {"EnemyHealth": [10], "Spawn": [100, "projectile", [0.3, 0.3, 0.3]]}},
+
+        {"kind": "wall", "position": [5, -3, 0], "size": [1, 1, 1], "behaviors": {"Item": ["Shotgun", "ammo-pickup"]}},
+
+
+
+        {"kind": "wall", "position": [0, -5, 0], "size": [27, 3, 27.0], "faces": {"top": {"type": "texture", "value": "floor"}, "back": {"type": "texture", "value": "floor"}, "left": {"type": "texture", "value": "floor"}, "right": {"type": "texture", "value": "floor"}, "front": {"type": "texture", "value": "floor"}, "bottom": {"type": "texture", "value": "floor"}}, "behaviors": {}},
+        {"kind": "wall", "position": [-15.49999999999999, -0.8, -1.400000000000001], "size": [25, 13.4, 31.400000000000006], "faces": {"right": {"type": "texture", "value": "wall"}, "front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [0, -10, 0], "size": [5, 5, 5], "faces": {"right": {"type": "texture", "value": "wall"}, "front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [-2, -5, 0], "size": [5, 5, 5], "faces": {"right": {"type": "texture", "value": "wall"}, "front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [-2, -5, 0], "size": [5, 5, 5], "faces": {"right": {"type": "texture", "value": "wall"}, "front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [-2, -5, 0], "size": [5, 5, 5], "faces": {"right": {"type": "texture", "value": "wall"}, "front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [6.800000000000001, -2, -17.500000000000004], "size": [20.199999999999974, 17.799999999999997, 12.2], "faces": {"front": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [10, 2, 19], "size": [29.0, 17.799999999999997, 12.199999999999998], "faces": {"back": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [23, 1, 1], "size": [17.799999999999997, 17.799999999999997, 40.2], "faces": {"left": {"type": "texture", "value": "wall"}}, "behaviors": {}}
+    ]
+}

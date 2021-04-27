@@ -1,0 +1,567 @@
+{
+    "behaviors": {
+        "BlockedByObjects": "behavior_collision",
+        "Disappear": "behavior_disappear",
+        "Goto": "behavior_goto",
+        "GotoSupervisor": "behavior_goto_sup",
+        "Gravity": "behavior_gravity",
+        "Jump": "behavior_jump",
+        "KeyMove": "behavior_key_move",
+        "MouseRotation": "behavior_mouse_rotation",
+        "Pickup": "behavior_pickup",
+        "Platform": "behavior_platform",
+        "Switch": "behavior_switch",
+        "XRotation": "behavior_x_rotation",
+        "YRotation": "behavior_y_rotation",
+        "ZRotation": "behavior_z_rotation"
+    },
+    "files": {
+        "bgmusic": "background_music.mp3",
+        "floor": "images/floor.jpg",
+        "unlock": "unlock.wav"
+    },
+    "level": {
+        "music": "bgmusic"
+    },
+    "objects": [
+        {
+            "behaviors": {
+                "BlockedByObjects": [],
+                "Gravity": [
+                    0.1
+                ],
+                "Jump": [
+                    0.5,
+                    0.05
+                ],
+                "KeyMove": [
+                    0.1
+                ],
+                "MouseRotation": [
+                    0.1
+                ]
+            },
+            "kind": "player",
+            "position": [
+                6.845756864493391,
+                1.3877787807814457e-16,
+                1.52410021054328
+            ],
+            "size": [
+                1.0,
+                10.0,
+                1.0
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "cube",
+            "position": [
+                15.0,
+                8.0,
+                0.0
+            ],
+            "size": [
+                10.0,
+                10.0,
+                10.0
+            ]
+        },
+        {
+            "behaviors": {},
+            "faces": {
+                "bottom": {
+                    "type": "texture",
+                    "value": "floor"
+                }
+            },
+            "kind": "ground",
+            "position": [
+                -5.0,
+                5.0,
+                3.0
+            ],
+            "size": [
+                2.0,
+                2.0,
+                2.0
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "cube",
+            "position": [
+                0.0,
+                -50.0,
+                0.0
+            ],
+            "size": [
+                10.0,
+                5.0,
+                10.0
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "cube",
+            "position": [
+                15.0,
+                -50.0,
+                0.0
+            ],
+            "size": [
+                10.0,
+                5.0,
+                10.0
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "cube",
+            "position": [
+                -15.0,
+                -50.0,
+                0.0
+            ],
+            "size": [
+                10.0,
+                5.0,
+                10.0
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                0,
+                -10,
+                0
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                0,
+                -10,
+                -10
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                0,
+                -10,
+                10
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                10,
+                -10,
+                0
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                10,
+                -10,
+                -10
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                10,
+                -10,
+                10
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                -10,
+                -10,
+                0
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                -10,
+                -10,
+                -10
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                -10,
+                -10,
+                10
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                -20,
+                -10,
+                0
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                -20,
+                -10,
+                -10
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                -20,
+                -10,
+                10
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                20,
+                -10,
+                0
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                20,
+                -10,
+                -10
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "ground",
+            "position": [
+                20,
+                -10,
+                10
+            ],
+            "size": [
+                10,
+                10,
+                10
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "wall",
+            "position": [
+                20,
+                -1,
+                15
+            ],
+            "size": [
+                5,
+                5,
+                5
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "wall",
+            "position": [
+                10,
+                -1,
+                15
+            ],
+            "size": [
+                5,
+                5,
+                5
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "wall",
+            "position": [
+                0,
+                -1,
+                15
+            ],
+            "size": [
+                5,
+                5,
+                5
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "wall",
+            "position": [
+                -10,
+                -1,
+                15
+            ],
+            "size": [
+                5,
+                5,
+                5
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "wall",
+            "position": [
+                -20,
+                -1,
+                15
+            ],
+            "size": [
+                5,
+                5,
+                5
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "wall",
+            "position": [
+                20,
+                -1,
+                -15
+            ],
+            "size": [
+                5,
+                5,
+                5
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "wall",
+            "position": [
+                10,
+                -1,
+                -15
+            ],
+            "size": [
+                5,
+                5,
+                5
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "wall",
+            "position": [
+                0,
+                -1,
+                -15
+            ],
+            "size": [
+                5,
+                5,
+                5
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "wall",
+            "position": [
+                -10,
+                -1,
+                -15
+            ],
+            "size": [
+                5,
+                5,
+                5
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "wall",
+            "position": [
+                -20,
+                -1,
+                -15
+            ],
+            "size": [
+                5,
+                5,
+                5
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "sidewall",
+            "position": [
+                25,
+                -1,
+                10
+            ],
+            "size": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "sidewall",
+            "position": [
+                25,
+                -1,
+                0
+            ],
+            "size": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "sidewall",
+            "position": [
+                25,
+                -1,
+                -10
+            ],
+            "size": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "sidewall",
+            "position": [
+                -25,
+                -1,
+                10
+            ],
+            "size": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "sidewall",
+            "position": [
+                -25,
+                -1,
+                0
+            ],
+            "size": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "behaviors": {},
+            "kind": "sidewall",
+            "position": [
+                -25,
+                -1,
+                -10
+            ],
+            "size": [
+                1,
+                1,
+                1
+            ]
+        }
+    ]
+}

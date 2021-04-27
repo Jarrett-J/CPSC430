@@ -1,0 +1,12 @@
+from behavior import Behavior
+from pubsub import pub
+
+
+class Shoot(Behavior):
+    def __init__(self):
+        super(Shoot, self).__init__()
+
+        pub.subscribe(self.shoot, 'key-shoot')
+
+    def shoot(self):
+        pass

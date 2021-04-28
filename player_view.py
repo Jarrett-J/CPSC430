@@ -16,6 +16,7 @@ from object_vehicle import ObjectVehicle
 from object_ground import ObjectGround
 from object_wall import ObjectWall
 from object_sidewall import ObjectSideWall
+from object_melee_enemy import ObjectMeleeEnemy
 
 
 class PlayerView:
@@ -28,6 +29,7 @@ class PlayerView:
         pub.subscribe(self.new_game_object, 'create')
         pub.subscribe(self.delete_game_object, 'delete')
         pub.subscribe(self.set_ammo_text, 'refresh-text')
+        pub.subscribe(self.set_health_text, 'player-damage')
 
         self.setup()
         global ammo_texture
@@ -39,7 +41,10 @@ class PlayerView:
         self.selected_weapon = 1
 
     def delete_game_object(self, game_object):
-        del self.view_objects[game_object.id]
+        try:
+            del self.view_objects[game_object.id]
+        except KeyError:
+            print("KeyError occured")
 
     def tick(self):
         mouseMove = (0, 0)
@@ -257,6 +262,9 @@ class PlayerView:
 
         elif game_object.kind == "projectile":
             self.view_objects[game_object.id] = ObjectWall(game_object)
+
+        elif game_object.kind == "meleeEnemy":
+            self.view_objects[game_object.id] = ObjectMeleeEnemy(game_object)
             
         elif game_object.kind == "player":
             self.player = game_object
@@ -345,7 +353,7 @@ class PlayerView:
         # melee
         if self.selected_weapon == 1:
             self.melee_behavior = self.player.get_behavior("Melee")
-            print(str(self.melee_behavior.reloading))
+
             if self.melee_behavior.reloading:
                 if self.melee_behavior.current_cooldown >= 20:
                     self.render_weapon(self.melee_attack[0], 0, 3)
@@ -519,6 +527,7 @@ class PlayerView:
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
 
+        # prevents black line around image
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 

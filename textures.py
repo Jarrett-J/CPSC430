@@ -16,6 +16,7 @@ class Textures:
                 return
 
             image = Image.open(GameLogic.files[tag])
+            image = image.convert('RGB')
 
             ix = image.size[0]
             iy = image.size[1]
@@ -28,7 +29,12 @@ class Textures:
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, ix, iy, 0, GL_RGB, GL_UNSIGNED_BYTE, image)
+
+            # is there a way to prevent texture from splitting?
+            #glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+            #glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, ix, iy, 0, GL_RGB, GL_UNSIGNED_BYTE, image)
 
             glEnable(GL_TEXTURE_2D)
 

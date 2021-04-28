@@ -17,13 +17,12 @@ class Sounds:
 
     @staticmethod
     def play_sound(tag, callback=None):
-        print(tag)
         if tag not in Sounds.sounds:
             if tag in GameLogic.files:
                 Sounds.sounds[tag] = pygame.mixer.Sound(GameLogic.files[tag])
 
         if tag not in Sounds.sounds:
-            print("tag not found")
+            print("sound tag '" + tag + "' not found")
             return
 
         mixer = pygame.mixer.Sound.play(Sounds.sounds[tag])

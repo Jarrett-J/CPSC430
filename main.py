@@ -1,7 +1,7 @@
 from game_logic import GameLogic
 from player_view import PlayerView
 from sounds import Sounds
-
+from movies import Movies
 
 class Main:
     def __init__(self):
@@ -16,6 +16,7 @@ class Main:
         while True:
             GameLogic.tick()
             Sounds.tick()
+            Movies.tick()
 
             for instance in self.instances:
                 instance.tick()

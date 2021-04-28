@@ -5,7 +5,7 @@ from sounds import Sounds
 class Pistol(Behavior):
     def __init__(self, shoot_sound=None, empty_sound=None):
         super(Pistol, self).__init__()
-        self.ammo_count = 0
+        self.ammo_count = 5
         self.shoot_sound = shoot_sound
         self.empty_sound = empty_sound
         self.max_cooldown = 15

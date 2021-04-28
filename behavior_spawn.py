@@ -12,12 +12,18 @@ class Spawn(Behavior):
         self.current_cooldown = max_cooldown
         self.kind = kind
         self.size = size
+        # projectile texture
+        self.textures = {"right": {"type": "texture", "value": "lava"}, "front": {"type": "texture", "value": "lava"},
+                         "left": {"type": "texture", "value": "lava"}, "top": {"type": "texture", "value": "lava"},
+                         "back": {"type": "texture", "value": "lava"}, "bottom": {"type": "texture", "value": "lava"}}
+
+        self.speed = 0.3
 
     def get_projectile_type(self):
         if self.kind == "heatseeking":
             self.behaviors = {"EnemyHealth": [10], "Goto": ["player", 0.1, 0.1], "Projectile": [10, self.game_object], "Gravity": [0.1]}
         else:
-            self.behaviors = {"EnemyHealth": [10], "GotoLastPosition": ["player", 0.1, 0.1], "Projectile": [10, self.game_object], "Gravity": [0.01]}
+            self.behaviors = {"EnemyHealth": [10], "GotoLastPosition": ["player", self.speed, 0.1], "Projectile": [10, self.game_object], "Gravity": [0.01], "XRotation": [1], "YRotation": [1]}
 
     def spawn(self):
         self.get_projectile_type()
@@ -28,7 +34,7 @@ class Spawn(Behavior):
         #         behaviors = {"EnemyHealth": [10], "Goto": ["player", 0.1, 0.1], "Projectile": [10, 'projectileEnemy']}
         #         data = {'kind': 'projectile', 'position': position, 'behaviors': behaviors}
 
-        data = {'kind': self.kind, 'position': position, 'behaviors': self.behaviors}
+        data = {'kind': self.kind, 'position': position, 'behaviors': self.behaviors, 'faces': self.textures}
 
         if self.size:
             data['size'] = self.size

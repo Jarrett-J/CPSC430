@@ -24,6 +24,7 @@ class PlayerView:
         self.player = None
         self.clock = pygame.time.Clock()
         self.camera_direction = [0.0, 0.0, -1.0]
+        self.scale = 2
 
         self.edit_mode = False
         self.position_mode = False
@@ -254,30 +255,39 @@ class PlayerView:
         glPushMatrix()
         glTranslate(*position)
 
+        scale = self.scale
+
         glBegin(GL_QUADS)
         glNormal3f(0.0, 0.0, 1.0)
         glTexCoord2f(1.0, 0.0)
-        glVertex3d(-0.5, 0.5, 0.5)
+        glVertex3d(-0.5 * scale, 0.5 * scale, 0.5 * scale)
+
         glTexCoord2f(0.0, 0.0)
-        glVertex3d(-0.5, -0.5, 0.5)
+        glVertex3d(-0.5 * scale, -0.5 * scale, 0.5 * scale)
+
         glTexCoord2f(0.0, 1.0)
-        glVertex3d(0.5, -0.5, 0.5)
+        glVertex3d(0.5 * scale, -0.5 * scale, 0.5 * scale)
+
         glTexCoord2f(1.0, 1.0)
-        glVertex3d(0.5, 0.5, 0.5)
+        glVertex3d(0.5 * scale, 0.5 * scale, 0.5 * scale)
 
         glEnd()
 
         # Back face
         glBegin(GL_QUADS)
         glNormal3f(0.0, 0.0, -1.0)
+
         glTexCoord2f(1.0, 1.0)
-        glVertex3d(-0.5, 0.5, -0.5)
+        glVertex3d(-0.5 * scale, 0.5 * scale, -0.5 * scale)
+
         glTexCoord2f(1.0, 0.0)
-        glVertex3d(-0.5, -0.5, -0.5)
+        glVertex3d(-0.5 * scale, -0.5 * scale, -0.5 * scale)
+
         glTexCoord2f(0.0, 0.0)
-        glVertex3d(0.5, -0.5, -0.5)
+        glVertex3d(0.5 * scale, -0.5 * scale, -0.5 * scale)
+
         glTexCoord2f(0.0, 1.0)
-        glVertex3d(0.5, 0.5, -0.5)
+        glVertex3d(0.5 * scale, 0.5 * scale, -0.5 * scale)
 
         glEnd()
 
@@ -285,14 +295,18 @@ class PlayerView:
         glBegin(GL_QUADS)
 
         glNormal3f(-1.0, 0.0, 0.0)
+
         glTexCoord2f(1.0, 0.0)
-        glVertex3d(-0.5, 0.5, 0.5)
+        glVertex3d(-0.5 * scale, 0.5 * scale, 0.5 * scale)
+
         glTexCoord2f(0.0, 0.0)
-        glVertex3d(-0.5, -0.5, 0.5)
+        glVertex3d(-0.5 * scale, -0.5 * scale, 0.5 * scale)
+
         glTexCoord2f(0.0, 1.0)
-        glVertex3d(-0.5, -0.5, -0.5)
+        glVertex3d(-0.5 * scale, -0.5 * scale, -0.5 * scale)
+
         glTexCoord2f(1.0, 1.0)
-        glVertex3d(-0.5, 0.5, -0.5)
+        glVertex3d(-0.5 * scale, 0.5 * scale, -0.5 * scale)
 
         glEnd()
 
@@ -301,26 +315,33 @@ class PlayerView:
         glNormal3f(1.0, 0.0, 0.0)
 
         glTexCoord2f(1.0, 0.0)
-        glVertex3d(0.5, 0.5, 0.5)
+        glVertex3d(0.5 * scale, 0.5 * scale, 0.5 * scale)
+
         glTexCoord2f(0.0, 0.0)
-        glVertex3d(0.5, -0.5, 0.5)
+        glVertex3d(0.5 * scale, -0.5 * scale, 0.5 * scale)
+
         glTexCoord2f(0.0, 1.0)
-        glVertex3d(0.5, -0.5, -0.5)
+        glVertex3d(0.5 * scale, -0.5 * scale, -0.5 * scale)
+
         glTexCoord2f(1.0, 1.0)
-        glVertex3d(0.5, 0.5, -0.5)
+        glVertex3d(0.5 * scale, 0.5 * scale, -0.5 * scale)
         glEnd()
 
         # Top face
         glBegin(GL_QUADS)
         glNormal3f(0.0, 1.0, 0.0)
+
         glTexCoord2f(1.0, 0.0)
-        glVertex3d(-0.5, 0.5, 0.5)
+        glVertex3d(-0.5 * scale, 0.5 * scale, 0.5 * scale)
+
         glTexCoord2f(0.0, 0.0)
-        glVertex3d(0.5, 0.5, 0.5)
+        glVertex3d(0.5 * scale, 0.5 * scale, 0.5 * scale)
+
         glTexCoord2f(0.0, 1.0)
-        glVertex3d(0.5, 0.5, -0.5)
+        glVertex3d(0.5 * scale, 0.5 * scale, -0.5 * scale)
+
         glTexCoord2f(1.0, 1.0)
-        glVertex3d(-0.5, 0.5, -0.5)
+        glVertex3d(-0.5 * scale, 0.5 * scale, -0.5 * scale)
         glEnd()
 
         # Bottom face
@@ -328,16 +349,18 @@ class PlayerView:
         glNormal3f(0.0, -1.0, 0.0)
 
         glTexCoord2f(1.0, 0.0)
+        glVertex3d(-0.5 * scale, -0.5 * scale, 0.5 * scale)
 
-        glVertex3d(-0.5, -0.5, 0.5)
         glTexCoord2f(0.0, 0.0)
-        glVertex3d(0.5, -0.5, 0.5)
-        glTexCoord2f(0.0, 1.0)
-        glVertex3d(0.5, -0.5, -0.5)
-        glTexCoord2f(1.0, 1.0)
-        glVertex3d(-0.5, -0.5, -0.5)
-        glEnd()
+        glVertex3d(0.5 * scale, -0.5 * scale, 0.5 * scale)
 
+        glTexCoord2f(0.0, 1.0)
+        glVertex3d(0.5 * scale, -0.5 * scale, -0.5 * scale)
+
+        glTexCoord2f(1.0, 1.0)
+        glVertex3d(-0.5 * scale, -0.5 * scale, -0.5 * scale)
+
+        glEnd()
         glPopMatrix()
 
     def create_object(self):
@@ -350,7 +373,7 @@ class PlayerView:
         position[1] = round(position[1])
         position[2] = round(position[2])
 
-        GameLogic.create_object({'kind': 'wall', 'position': position})
+        GameLogic.create_object({'size': [self.scale, self.scale, self.scale], 'kind': 'wall', 'position': position})
 
     def prepare_3d(self):
         glViewport(0, 0, self.window_width, self.window_height)

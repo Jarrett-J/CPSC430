@@ -146,13 +146,14 @@ class GameLogic:
         if 'name' in data:
             GameLogic.name_index[data['name']] = obj
 
-        for behavior in data['behaviors']:
-            module = importlib.import_module(GameLogic.level_data['behaviors'][behavior])
-            class_ = getattr(module, behavior)
-            instance = class_(*data['behaviors'][behavior])
-            instance.arguments = data['behaviors'][behavior]
+        if 'behaviors' in data:
+            for behavior in data['behaviors']:
+                module = importlib.import_module(GameLogic.level_data['behaviors'][behavior])
+                class_ = getattr(module, behavior)
+                instance = class_(*data['behaviors'][behavior])
+                instance.arguments = data['behaviors'][behavior]
 
-            obj.add_behavior(instance)
+                obj.add_behavior(instance)
 
         # send event
         pub.sendMessage('create', game_object=obj)

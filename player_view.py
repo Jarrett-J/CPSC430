@@ -26,10 +26,14 @@ class PlayerView:
         self.player = None
         self.clock = pygame.time.Clock()
 
+        self.splashscreen = True
+
         pub.subscribe(self.new_game_object, 'create')
         pub.subscribe(self.delete_game_object, 'delete')
         pub.subscribe(self.set_ammo_text, 'refresh-text')
+        pub.subscribe(self.set_health_text, 'refresh-health')
         pub.subscribe(self.set_health_text, 'player-damage')
+        pub.subscribe(self.toggle_splash, 'splash')
 
         self.setup()
         global ammo_texture
@@ -39,6 +43,9 @@ class PlayerView:
         ammo_texture = None
         health_texture = None
         self.selected_weapon = 1
+
+    def toggle_splash(self):
+        self.splashscreen = False
 
     def delete_game_object(self, game_object):
         try:
@@ -81,22 +88,32 @@ class PlayerView:
                     print("pressed l")
                     self.change_language()
 
+                if event.key == pygame.K_e:
+                    pub.sendMessage("key-activate")
+                    pos = pygame.mouse.get_pos()
+                    self.handle_activate(pos)
+
                 if event.key == pygame.K_SPACE:
                     pub.sendMessage("key-jump")
 
                 # select melee weapon
                 if event.key == pygame.K_1:
-                    print("melee selected")
                     self.selected_weapon = 1
                     self.set_ammo_text()
 
                 if event.key == pygame.K_2:
-                    print("pistol selected")
+                    if not self.player.get_behavior("Pistol").has_weapon:
+                        return
+
+                    self.player.get_behavior("Shoot").damage = 10
                     self.selected_weapon = 2
                     self.set_ammo_text()
 
                 if event.key == pygame.K_3:
-                    print("pisotl selected")
+                    if not self.player.get_behavior("Shotgun").has_weapon:
+                        return
+
+                    self.player.get_behavior("Shoot").damage = 30
                     self.selected_weapon = 3
                     self.set_ammo_text()
 
@@ -128,8 +145,10 @@ class PlayerView:
             # self.display_gun()
             glPopMatrix()
 
-            self.render_hud()
-            self.display_weapon()
+            if not self.splashscreen:
+                self.render_hud()
+                self.display_weapon()
+
             pygame.display.flip()
 
             # fps
@@ -167,6 +186,7 @@ class PlayerView:
             Localize.set_lang('en')
 
         print("language is now " + Localize.lang)
+        self.set_health_text()
         self.set_ammo_text()
 
         for id in self.view_objects:
@@ -251,7 +271,7 @@ class PlayerView:
         elif game_object.kind == "ground":
             self.view_objects[game_object.id] = ObjectGround(game_object)
 
-        elif game_object.kind == "wall":
+        elif game_object.kind == "wall" or game_object.kind == "lava":
             self.view_objects[game_object.id] = ObjectWall(game_object)
 
         elif game_object.kind == "sidewall":
@@ -268,16 +288,65 @@ class PlayerView:
             
         elif game_object.kind == "player":
             self.player = game_object
-            #self.set_text()
+            if self.player.name == "player":
+                self.splashscreen = False
+
+    def handle_activate(self, pos):
+        windowX = pos[0]
+        windowY = self.window_height - pos[1]
+
+        # if multiple objects under cursor, return up to 200
+        glSelectBuffer(200)
+        glRenderMode(GL_SELECT)
+
+        glMatrixMode(GL_PROJECTION)
+        glPushMatrix()
+        glLoadIdentity()
+
+        gluPickMatrix(windowX, windowY, 1.0, 1.0, glGetIntegerv(GL_VIEWPORT))
+        gluPerspective(self.field_of_view, self.aspect_ratio, self.near_distance, self.far_distance)
+
+        glMatrixMode(GL_MODELVIEW)
+        glLoadMatrixf(self.viewMatrix) ###
+        self.display()
+
+        glMatrixMode(GL_PROJECTION)
+        glPopMatrix()
+
+        buffer = glRenderMode(GL_RENDER)
+
+        objects = []
+        for record in buffer:
+            min_depth, max_depth, name = record
+            objects += name
+
+        if not objects:
+            return
+
+        camera = numpy.linalg.inv(glGetFloatv(GL_MODELVIEW_MATRIX))
+        camera = camera[3][0:3]
+
+        closest = None
+
+        for id in objects:
+            obj_pos = self.view_objects[id].game_object.position
+
+            if not closest or numpy.linalg.norm(obj_pos - camera) < numpy.linalg.norm(closest.position - camera):
+                closest = self.view_objects[id].game_object
+
+        closest.activated(self.player)
 
     def handle_click(self, pos):
+        # fixes fps issues
+        if self.selected_weapon == 1 and self.player.get_behavior("Melee").reloading:
+            return
+
         if self.selected_weapon == 2:
             self.pistol_behavior = self.player.get_behavior("Pistol")
             if not self.pistol_behavior.shoot():
                 return
 
             self.set_ammo_text()
-            print("Clicked. Ammo count is " + str(self.pistol_behavior.ammo_count))
 
         if self.selected_weapon == 3:
             self.shotgun_behavior = self.player.get_behavior("Shotgun")
@@ -285,7 +354,6 @@ class PlayerView:
                 return
 
             self.set_ammo_text()
-            print("Clicked. Ammo count is " + str(self.shotgun_behavior.ammo_count))
 
         windowX = pos[0]
         windowY = self.window_height - pos[1]
@@ -421,6 +489,8 @@ class PlayerView:
         if health_texture is None:
             self.set_health_text()
 
+        if health_texture is None or ammo_texture is None:
+            return
 
         glMatrixMode(GL_PROJECTION)
         glLoadIdentity()
@@ -466,11 +536,10 @@ class PlayerView:
         glDisable(GL_TEXTURE_2D)
 
     def set_ammo_text(self):
-        print("setting text")
         global ammo_texture
 
         if self.selected_weapon == 1:
-            img = pygame.font.SysFont('Arial', 50).render("Melee", True, (255, 255, 255),
+            img = pygame.font.SysFont('Arial', 50).render(language("Melee"), True, (255, 255, 255),
                                                           (0, 0, 0, 0))
         else:
             ammo = 0
@@ -496,7 +565,12 @@ class PlayerView:
     def set_health_text(self):
         global health_texture
 
-        img = pygame.font.SysFont('Arial', 50).render(language("Health: ") + str(self.player.get_behavior("PlayerHealth").health), True, (255, 255, 255),
+        health_behavior = self.player.get_behavior("PlayerHealth")
+
+        if not health_behavior:
+            return
+
+        img = pygame.font.SysFont('Arial', 50).render(language("Health: ") + str(health_behavior.health), True, (255, 255, 255),
                                                       (0, 0, 0, 0))
         w, h = img.get_size()
         health_texture = glGenTextures(1)

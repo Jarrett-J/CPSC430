@@ -16,7 +16,8 @@ class Player(GameObject):
         pub.subscribe(self.rotate_y, 'rotate-y')
         pub.subscribe(self.rotate_x, 'rotate-x')
         pub.sendMessage("refresh-text")
-        self.speed = 1
+
+        self.speed = 5
 
     def key_w(self):
         self.position[2] -= self.speed * math.cos(math.radians(self._y_rotation))
@@ -45,7 +46,6 @@ class Player(GameObject):
         self.x_rotation += amount
     
     def tick(self):
-        print("a")
         if self.collisions:
             mypos = numpy.array(self.position)
             
@@ -54,6 +54,3 @@ class Player(GameObject):
                 distance = numpy.linalg.norm(mypos - otherpos)
                 direction_vector = (mypos - otherpos)/distance
                 self.position = otherpos+(distance+0.1)*direction_vector
-
-    def clicked(self, game_object):
-        print("Player was clicked!!!!!!!!!!!!!!!!")

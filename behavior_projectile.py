@@ -10,7 +10,7 @@ class Projectile(Behavior):
         self.summoner_game_object = summoner_game_object
         self.destroying = False
 
-        print("ignoring " + str(self.summoner_game_object))
+        # print("ignoring " + str(self.summoner_game_object))
 
     def tick(self):
         if self.destroying:
@@ -29,7 +29,7 @@ class Projectile(Behavior):
                     if other.kind == "player":
                         other.get_behavior("PlayerHealth").hit_player(self.damage)
 
-                    print("Collided with " + str(other.kind))
+                    # print("Collided with " + str(other.kind))
                     self.delete_object()
 
     def delete_object(self):

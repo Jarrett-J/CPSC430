@@ -36,9 +36,9 @@ class GameObject:
 
         pub.subscribe(self.clicked, "clicked-"+str(id))
 
+
        # if 'name' in data:
         if 'name' in data and self._name is not None:
-            print(str(type) + "subscribed to clicked-" + str(data['name']))
             pub.subscribe(self.clicked, "clicked-"+data['name'])
 
     @property
@@ -137,6 +137,10 @@ class GameObject:
     def clicked(self, game_object):
         for behavior in self.behaviors:
             self.behaviors[behavior].clicked(game_object)
+
+    def activated(self, game_object):
+        for behavior in self.behaviors:
+            self.behaviors[behavior].activated(game_object)
 
     def get_behavior(self, key, default=None):
         if key in self.behaviors:

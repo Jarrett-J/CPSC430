@@ -10,10 +10,15 @@ class Sounds:
     def play_music(tag):
         if tag in GameLogic.files:
             pygame.mixer.music.load(GameLogic.files[tag])
+            # 0.25 orig
             pygame.mixer.music.set_volume(0.25)
 
             # -1 means loop infinitely
             pygame.mixer.music.play(-1)
+
+    @staticmethod
+    def stop_music():
+        pygame.mixer.music.stop()
 
     @staticmethod
     def play_sound(tag, callback=None):

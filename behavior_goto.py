@@ -6,13 +6,14 @@ from game_logic import GameLogic
 
 
 class Goto(Behavior):
-    def __init__(self, destination, speed, distance, event=None):
+    def __init__(self, destination, speed, distance, min_distance=50, event=None, ):
         super(Goto, self).__init__()
         self.destination = destination
         self.speed = speed
         self.distance = distance
         self.event = event
         self.sent_event = False
+        self.min_distance = min_distance
 
     def get_destination(self):
         result = None
@@ -34,6 +35,10 @@ class Goto(Behavior):
         destination = numpy.array(destination)
         current = numpy.array(self.game_object.position)
         distance = numpy.linalg.norm(destination-current)
+
+        # don't go until object is close enough
+        if distance >= self.min_distance:
+            return
 
         if distance <= self.distance:
             if self.event and not self.sent_event:

@@ -2,10 +2,12 @@
     "behaviors": {
         "BlockedByObjects": "behavior_collision",
         "Disappear": "behavior_disappear",
+        "EnemyHealth": "behavior_enemy_health",
         "Goto": "behavior_goto",
         "GotoSupervisor": "behavior_goto_sup",
         "Gravity": "behavior_gravity",
         "Jump": "behavior_jump",
+        "KeyFly": "behavior_key_fly",
         "KeyMove": "behavior_key_move",
         "MouseRotation": "behavior_mouse_rotation",
         "Pickup": "behavior_pickup",
@@ -13,555 +15,207 @@
         "Switch": "behavior_switch",
         "XRotation": "behavior_x_rotation",
         "YRotation": "behavior_y_rotation",
-        "ZRotation": "behavior_z_rotation"
+        "ZRotation": "behavior_z_rotation",
+        "RandomGroundMovement": "behavior_random_ground_movement",
+        "Spawn": "behavior_spawn",
+        "Item": "behavior_item",
+        "Shotgun": "behavior_shotgun",
+        "Projectile": "behavior_projectile",
+        "PlayerHealth": "behavior_player_health",
+        "DestroyOnCollision": "behavior_destroy_on_collision",
+        "Melee": "behavior_melee",
+        "Pistol": "behavior_pistol",
+        "GotoLastPosition": "behavior_goto_last_position",
+        "EnemyMelee": "behavior_enemy_melee",
+        "Movie": "behavior_movie",
+        "WeaponPickup": "behavior_weapon_pickup",
+        "PlatformActivated": "behavior_platform_activated",
+        "SwitchActivate": "behavior_switch_activate",
+        "PlatformHazard": "behavior_platform_hazard",
+        "LoadLevel": "behavior_load_level",
+        "HealthPickup": "behavior_health_pickup",
+        "Shoot": "behavior_shoot"
     },
     "files": {
-        "bgmusic": "background_music.mp3",
+        "wall": "images/wall.jpg",
         "floor": "images/floor.jpg",
-        "unlock": "unlock.wav"
+        "enemy-chainsaw": "images/enemies/enemy-chainsaw.png",
+        "ghast-front": "images/enemies/ghast/ghast-front.png",
+        "blue-stone": "images/walls/blue-stone.png",
+        "metal-wall": "images/walls/metal-wall.png",
+        "brick-wall": "images/walls/brick-wall.png",
+        "red-door": "images/walls/red-door.png",
+        "stone-wall": "images/walls/stone-wall.png",
+        "rock": "images/walls/rock.png",
+        "button": "images/walls/button.png",
+        "ammo": "images/etc/ammo.jpg",
+        "health": "images/etc/health.jpg",
+        "shotgun-shoot": "sounds/shotgun-shoot.wav",
+        "enemy-hit-1": "sounds/enemy-hit-1.wav",
+        "empty-gun": "sounds/empty-gun.wav",
+        "player-oof": "sounds/player-oof.wav",
+        "pistol-shoot": "sounds/pistol-shoot.wav",
+        "ammo-pickup": "sounds/ammo-pickup.wav",
+        "punch": "sounds/punch.wav",
+        "bird-movie": "videos/bird.mov",
+        "lava": "images/walls/FIRELAVA.png",
+        "crate": "images/etc/crate.png",
+        "dancing": "sounds/music/dancing.mp3"
     },
     "level": {
-        "music": "bgmusic"
+        "music": "dancing"
     },
     "objects": [
-        {
-            "behaviors": {
-                "BlockedByObjects": [],
-                "Gravity": [
-                    0.1
-                ],
-                "Jump": [
-                    0.5,
-                    0.05
-                ],
-                "KeyMove": [
-                    0.1
-                ],
-                "MouseRotation": [
-                    0.1
-                ]
-            },
-            "kind": "player",
-            "position": [
-                6.845756864493391,
-                1.3877787807814457e-16,
-                1.52410021054328
-            ],
-            "size": [
-                1.0,
-                10.0,
-                1.0
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "cube",
-            "position": [
-                15.0,
-                8.0,
-                0.0
-            ],
-            "size": [
-                10.0,
-                10.0,
-                10.0
-            ]
-        },
-        {
-            "behaviors": {},
-            "faces": {
-                "bottom": {
-                    "type": "texture",
-                    "value": "floor"
-                }
-            },
-            "kind": "ground",
-            "position": [
-                -5.0,
-                5.0,
-                3.0
-            ],
-            "size": [
-                2.0,
-                2.0,
-                2.0
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "cube",
-            "position": [
-                0.0,
-                -50.0,
-                0.0
-            ],
-            "size": [
-                10.0,
-                5.0,
-                10.0
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "cube",
-            "position": [
-                15.0,
-                -50.0,
-                0.0
-            ],
-            "size": [
-                10.0,
-                5.0,
-                10.0
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "cube",
-            "position": [
-                -15.0,
-                -50.0,
-                0.0
-            ],
-            "size": [
-                10.0,
-                5.0,
-                10.0
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                0,
-                -10,
-                0
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                0,
-                -10,
-                -10
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                0,
-                -10,
-                10
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                10,
-                -10,
-                0
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                10,
-                -10,
-                -10
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                10,
-                -10,
-                10
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                -10,
-                -10,
-                0
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                -10,
-                -10,
-                -10
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                -10,
-                -10,
-                10
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                -20,
-                -10,
-                0
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                -20,
-                -10,
-                -10
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                -20,
-                -10,
-                10
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                20,
-                -10,
-                0
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                20,
-                -10,
-                -10
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "ground",
-            "position": [
-                20,
-                -10,
-                10
-            ],
-            "size": [
-                10,
-                10,
-                10
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "wall",
-            "position": [
-                20,
-                -1,
-                15
-            ],
-            "size": [
-                5,
-                5,
-                5
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "wall",
-            "position": [
-                10,
-                -1,
-                15
-            ],
-            "size": [
-                5,
-                5,
-                5
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "wall",
-            "position": [
-                0,
-                -1,
-                15
-            ],
-            "size": [
-                5,
-                5,
-                5
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "wall",
-            "position": [
-                -10,
-                -1,
-                15
-            ],
-            "size": [
-                5,
-                5,
-                5
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "wall",
-            "position": [
-                -20,
-                -1,
-                15
-            ],
-            "size": [
-                5,
-                5,
-                5
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "wall",
-            "position": [
-                20,
-                -1,
-                -15
-            ],
-            "size": [
-                5,
-                5,
-                5
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "wall",
-            "position": [
-                10,
-                -1,
-                -15
-            ],
-            "size": [
-                5,
-                5,
-                5
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "wall",
-            "position": [
-                0,
-                -1,
-                -15
-            ],
-            "size": [
-                5,
-                5,
-                5
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "wall",
-            "position": [
-                -10,
-                -1,
-                -15
-            ],
-            "size": [
-                5,
-                5,
-                5
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "wall",
-            "position": [
-                -20,
-                -1,
-                -15
-            ],
-            "size": [
-                5,
-                5,
-                5
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "sidewall",
-            "position": [
-                25,
-                -1,
-                10
-            ],
-            "size": [
-                1,
-                1,
-                1
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "sidewall",
-            "position": [
-                25,
-                -1,
-                0
-            ],
-            "size": [
-                1,
-                1,
-                1
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "sidewall",
-            "position": [
-                25,
-                -1,
-                -10
-            ],
-            "size": [
-                1,
-                1,
-                1
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "sidewall",
-            "position": [
-                -25,
-                -1,
-                10
-            ],
-            "size": [
-                1,
-                1,
-                1
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "sidewall",
-            "position": [
-                -25,
-                -1,
-                0
-            ],
-            "size": [
-                1,
-                1,
-                1
-            ]
-        },
-        {
-            "behaviors": {},
-            "kind": "sidewall",
-            "position": [
-                -25,
-                -1,
-                -10
-            ],
-            "size": [
-                1,
-                1,
-                1
-            ]
-        }
+        {"kind": "player", "position": [9.92734634703092, -1.7123656577809925, -1.6351494671688185], "size": [1.0, 3.0, 1.0], "name": "player", "behaviors": {"Shoot": [], "BlockedByObjects": [], "Gravity": [0.2], "Jump": [0.8, 0.07], "KeyMove": [0.2], "MouseRotation": [0.1], "Shotgun": ["shotgun-shoot", "empty-gun"], "Pistol": ["pistol-shoot", "empty-gun"], "Melee": ["punch"], "PlayerHealth": [100, "player-oof"]}},
+        {"kind": "wall", "position": [1, -7.799999999999998, -1], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [-4, -8, -1], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [1, -8, -6], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [-4, -8, -6], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [-4, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [1, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [6, -8, -6], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [6, -8.000000000000004, -1], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [6, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [11, -8, -6], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [11, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [16, -8, -6], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [16, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [21, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [21, -8, -6], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [11, -8.0, -0.8999999999999999], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [16, -8, -1], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [21, -9, -1], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [26, -10, -1], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [31, -11, -1], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [26, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [31, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [25.9, -8, -6], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [31, -8, -6], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [35, -12, -1], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [40, -13, -1], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [34, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [38, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [41, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [36, -8, -6], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [40, -8, -6], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [44, -8, -6], "size": [7.399999999999994, 5, 5], "faces": {"top": {"type": "texture", "value": "wall"}, "front": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [45, -8, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [44, -13, -1], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [50, -6, 4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [50, -6, -6], "size": [8.6, 5.0, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [52, -4, -5], "size": [5, 5.0, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [53, -1, 4], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "front": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [55, -3, -6], "size": [5.0, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [56, -2.4999999999999996, -1], "size": [12.2, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [57, -3, 2], "size": [8.6, 5.0, 8.6], "faces": {"front": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [104, -22, -0.49999999999999967], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [104.19999999999999, -23, -5.100000000000002], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [104.19999999999999, -23, 4.499999999999999], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [109, -23, 3], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [113, -23, 3], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [108, -22, -2], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [112, -23, -2], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [108, -24, -6], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [112, -25, -6], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [105, -24.400000000000006, 9], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [105, -26.200000000000003, 13], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [105, -28.1, 17], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [105, -29.200000000000003, 22], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [105, -31.200000000000003, 26.1], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [105.29999999999998, -33, 31], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [101, -36.2, 31], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [105.0, -30.1, 9], "size": [5.0, 11.1, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [105, -34, 9], "size": [5, 5, 5], "behaviors": {}},
+        {"kind": "wall", "position": [125.70000000000002, -25.1, 2.6999999999999997], "size": [23.299999999999997, 11.1, 23.299999999999997], "faces": {"top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [148, -22.1, -8.299999999999999], "size": [5, 11.1, 23.299999999999997], "faces": {"back": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [144.0, -20, 0], "size": [13.799999999999983, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [140, -23, 1], "size": [5, 5.1000000000000005, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [148, -17, -8], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [147, -15, -11], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [146, -14, -14], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [143, -12, -14], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [140, -11, -13], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [140, -10, -8], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [139, -9, -4], "size": [5, 5, 5], "faces": {"right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [139, -8, -1], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [141, -6, 1], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [144, -4, 1], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [149, -5.299999999999999, 0], "size": [5, 8.299999999999999, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [149, -4, 5], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [154, -4, 5], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [154, -4, 1], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [149, -4, -4], "size": [5, 5, 5], "faces": {"right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [154, -4, -4], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [149, -4, -8], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [154, -4, -8], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [149, -4, 10], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [153, -4, 10], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [148, -1, 10], "size": [5, 5, 5], "faces": {"right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [152, -2, 11], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [156.0000000000001, -5.199999999999999, 6], "size": [27.0, 7.199999999999999, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [153.80000000000018, -7.599999999999998, 5.999999999999999], "size": [30.300000000000004, 11.599999999999998, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [154.80000000000013, -4, -3], "size": [29.199999999999996, 5, 5], "faces": {"right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [154.90000000000012, -4, -7], "size": [28.099999999999994, 5, 5], "faces": {"right": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [143.6000000000002, -0.2, 15], "size": [53.40000000000001, 15.299999999999999, 5], "faces": {"right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [154.80000000000013, -4.1, 11], "size": [29.200000000000003, 6.1, 5], "faces": {"right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [171.9, -7.899999999999991, -2.3000000000000007], "size": [5, 36.90000000000001, 30.300000000000004], "faces": {"top": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [126.19999999999993, 0.8999999999999998, -0.3999999999999836], "size": [18.199999999999996, 5, 31.400000000000013], "faces": {"back": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [159.6000000000005, 4.600000000000001, -15], "size": [31.4, 15.999999999999996, 5.299999999999999], "faces": {"left": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [168, -2, 0], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [165, -2, 0], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [162, -2, 0], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [158, -2, 0], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [1.4999999999999876, -1.4999999999999991, -12.999999999999996], "size": [22.9, 30.6, 9.2], "faces": {"front": {"type": "texture", "value": "metal-wall"}, "left": {"type": "texture", "value": "metal-wall"}, "top": {"type": "texture", "value": "metal-wall"}, "back": {"type": "texture", "value": "metal-wall"}, "right": {"type": "texture", "value": "metal-wall"}, "bottom": {"type": "texture", "value": "metal-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [37.29999999999999, -1.7999999999999992, -13.69999999999999], "size": [48.800000000000026, 30.60000000000001, 10.399999999999997], "faces": {"right": {"type": "texture", "value": "metal-wall"}, "front": {"type": "texture", "value": "metal-wall"}, "top": {"type": "texture", "value": "metal-wall"}, "left": {"type": "texture", "value": "metal-wall"}, "back": {"type": "texture", "value": "metal-wall"}, "bottom": {"type": "texture", "value": "metal-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [5.600000000000001, -4.000000000000002, 10.699999999999996], "size": [24.2, 39.80000000000001, 8.599999999999998], "faces": {"right": {"type": "texture", "value": "metal-wall"}, "back": {"type": "texture", "value": "metal-wall"}, "front": {"type": "texture", "value": "metal-wall"}, "left": {"type": "texture", "value": "metal-wall"}, "top": {"type": "texture", "value": "metal-wall"}, "bottom": {"type": "texture", "value": "metal-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [39.3, -1.7999999999999996, 10.899999999999993], "size": [43.40000000000002, 30.600000000000012, 8.6], "faces": {"top": {"type": "texture", "value": "metal-wall"}, "back": {"type": "texture", "value": "metal-wall"}, "right": {"type": "texture", "value": "metal-wall"}, "front": {"type": "texture", "value": "metal-wall"}, "bottom": {"type": "texture", "value": "metal-wall"}, "left": {"type": "texture", "value": "metal-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [65.19999999999999, 5.900000000000003, 0], "size": [9.199999999999998, 16.200000000000003, 44.20000000000001], "faces": {"top": {"type": "texture", "value": "metal-wall"}, "back": {"type": "texture", "value": "metal-wall"}, "right": {"type": "texture", "value": "metal-wall"}, "front": {"type": "texture", "value": "metal-wall"}, "bottom": {"type": "texture", "value": "metal-wall"}, "left": {"type": "texture", "value": "metal-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [-11.500000000000004, -0.8000000000000015, 3.5000000000000027], "size": [15.799999999999995, 33.80000000000001, 24.200000000000006], "faces": {"top": {"type": "texture", "value": "metal-wall"}, "left": {"type": "texture", "value": "metal-wall"}, "back": {"type": "texture", "value": "metal-wall"}, "front": {"type": "texture", "value": "metal-wall"}, "bottom": {"type": "texture", "value": "metal-wall"}, "right": {"type": "texture", "value": "metal-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [53.29999999999997, -12.29999999999999, -0.6999999999999976], "size": [2.0, 2.0, 2.0], "faces": {"left": {"type": "texture", "value": "crate"}, "back": {"type": "texture", "value": "crate"}, "top": {"type": "texture", "value": "crate"}, "right": {"type": "texture", "value": "crate"}, "front": {"type": "texture", "value": "crate"}, "bottom": {"type": "texture", "value": "crate"}}, "name": "pistolcrate", "behaviors": {"WeaponPickup": ["Pistol"]}},
+        {"kind": "wall", "position": [54.100000000000016, -15.799999999999997, -1], "size": [13.199999999999978, 5, 14.099999999999993], "faces": {"right": {"type": "texture", "value": "floor"}, "top": {"type": "texture", "value": "floor"}, "front": {"type": "texture", "value": "floor"}, "left": {"type": "texture", "value": "floor"}, "back": {"type": "texture", "value": "floor"}, "bottom": {"type": "texture", "value": "floor"}}, "name": "platform", "behaviors": {"PlatformActivated": [[100.0, -15.0, 0.0], 0.05, true, false]}},
+        {"kind": "wall", "position": [56.2, -11.199999999999996, 4.8], "size": [1.7999999999999978, 2.9000000000000012, 1.5000000000000007], "faces": {"back": {"type": "texture", "value": "button"}, "left": {"type": "texture", "value": "button"}, "right": {"type": "texture", "value": "button"}, "bottom": {"type": "texture", "value": "button"}, "top": {"type": "texture", "value": "button"}, "front": {"type": "texture", "value": "button"}}, "name": "switch", "behaviors": {"SwitchActivate": ["toggle-platform"]}},
+        {"kind": "wall", "position": [105, 16, -30], "size": [3, 3, 3], "faces": {"front": {"type": "texture", "value": "ghast-front"}, "right": {"type": "texture", "value": "ghast-front"}, "left": {"type": "texture", "value": "ghast-front"}, "back": {"type": "texture", "value": "ghast-front"}, "top": {"type": "texture", "value": "ghast-front"}, "bottom": {"type": "texture", "value": "ghast-front"}}, "behaviors": {"EnemyHealth": [30], "BlockedByObjects": [], "Spawn": [50, "projectile", [1.0, 1.0, 1.0]], "RandomGroundMovement": [0.5, 0.0, 1.0, 0.0]}},
+        {"kind": "wall", "position": [129.59999999999988, -10.799999999999988, 67.80000000000001], "size": [100.0, 111.0999999999998, 50.0], "faces": {"left": {"type": "texture", "value": "stone-wall"}, "back": {"type": "texture", "value": "stone-wall"}, "right": {"type": "texture", "value": "stone-wall"}, "front": {"type": "texture", "value": "stone-wall"}, "top": {"type": "texture", "value": "stone-wall"}}, "name": "border", "behaviors": {}},
+        {"kind": "wall", "position": [-69, -23, -16], "size": [21.2, 134.59999999999997, 118.39999999999996], "faces": {"left": {"type": "texture", "value": "stone-wall"}, "back": {"type": "texture", "value": "stone-wall"}, "right": {"type": "texture", "value": "stone-wall"}, "front": {"type": "texture", "value": "stone-wall"}, "top": {"type": "texture", "value": "stone-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [61.2, -24, -58], "size": [234.2999999999999, 141.19999999999993, -16.199999999999996], "faces": {"right": {"type": "texture", "value": "stone-wall"}, "front": {"type": "texture", "value": "stone-wall"}, "left": {"type": "texture", "value": "stone-wall"}, "back": {"type": "texture", "value": "stone-wall"}, "top": {"type": "texture", "value": "stone-wall"}, "bottom": {"type": "texture", "value": "stone-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [190.0, -26.800000000000008, 8.0], "size": [21.2, 146.69999999999996, 158.89999999999998], "faces": {"front": {"type": "texture", "value": "stone-wall"}, "left": {"type": "texture", "value": "stone-wall"}, "back": {"type": "texture", "value": "stone-wall"}, "top": {"type": "texture", "value": "stone-wall"}, "right": {"type": "texture", "value": "stone-wall"}, "bottom": {"type": "texture", "value": "stone-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [37, 51, 1], "size": [290.3, 13.2, 106.99999999999991], "faces": {"left": {"type": "texture", "value": "stone-wall"}, "back": {"type": "texture", "value": "stone-wall"}, "right": {"type": "texture", "value": "stone-wall"}, "front": {"type": "texture", "value": "stone-wall"}, "bottom": {"type": "texture", "value": "stone-wall"}, "top": {"type": "texture", "value": "stone-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [164, -34, -4], "size": [5, 5, 5], "faces": {"front": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "left": {"type": "texture", "value": "wall"}, "back": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [26.099999999999984, 17.99999999999999, -3], "size": [80.6, 8.6, 23.0], "faces": {"top": {"type": "texture", "value": "metal-wall"}, "left": {"type": "texture", "value": "metal-wall"}, "back": {"type": "texture", "value": "metal-wall"}, "right": {"type": "texture", "value": "metal-wall"}, "front": {"type": "texture", "value": "metal-wall"}, "bottom": {"type": "texture", "value": "metal-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [59, 0, -6], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "wall"}, "top": {"type": "texture", "value": "wall"}, "front": {"type": "texture", "value": "wall"}, "bottom": {"type": "texture", "value": "wall"}, "right": {"type": "texture", "value": "wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [-2.000000000000001, -6, -1], "size": [5, 5, 5], "faces": {"right": {"type": "texture", "value": "stone-wall"}, "top": {"type": "texture", "value": "stone-wall"}, "front": {"type": "texture", "value": "stone-wall"}, "back": {"type": "texture", "value": "stone-wall"}, "bottom": {"type": "texture", "value": "metal-wall"}, "left": {"type": "texture", "value": "stone-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [30.200000000000003, -8.599999999999998, 68.4], "size": [100.0, 104.19999999999997, 50.0], "faces": {"right": {"type": "texture", "value": "stone-wall"}, "front": {"type": "texture", "value": "stone-wall"}, "left": {"type": "texture", "value": "stone-wall"}, "back": {"type": "texture", "value": "stone-wall"}, "top": {"type": "texture", "value": "stone-wall"}, "bottom": {"type": "texture", "value": "stone-wall"}}, "name": "border2", "behaviors": {}},
+        {"kind": "wall", "position": [-50.4, -8, 72.19999999999999], "size": [62.400000000000006, 108.8999999999999, 62.4], "faces": {"back": {"type": "texture", "value": "stone-wall"}, "right": {"type": "texture", "value": "stone-wall"}, "front": {"type": "texture", "value": "stone-wall"}, "top": {"type": "texture", "value": "stone-wall"}, "left": {"type": "texture", "value": "stone-wall"}, "bottom": {"type": "texture", "value": "stone-wall"}}, "behaviors": {}},
+        {"kind": "wall", "position": [62.40000000000003, -84.80000000000001, 1.3999999999999995], "size": [240.19999999999987, 100.0, 105.79999999999997], "faces": {"top": {"type": "texture", "value": "lava"}, "back": {"type": "texture", "value": "lava"}, "right": {"type": "texture", "value": "lava"}, "front": {"type": "texture", "value": "lava"}, "left": {"type": "texture", "value": "lava"}, "bottom": {"type": "texture", "value": "lava"}}, "behaviors": {"PlatformHazard": [[62.40000000000003, -84.0, 1.3999999999999995], 0.01, true]}},
+        {"kind": "wall", "position": [44, -3, 4], "size": [1.1999999999999984, 4.600000000000001, 3.7000000000000033], "faces": {"left": {"type": "texture", "value": "enemy-chainsaw"}, "back": {"type": "texture", "value": "enemy-chainsaw"}, "right": {"type": "texture", "value": "enemy-chainsaw"}, "front": {"type": "texture", "value": "enemy-chainsaw"}, "top": {"type": "texture", "value": "enemy-chainsaw"}, "bottom": {"type": "texture", "value": "enemy-chainsaw"}}, "behaviors": {"Goto": ["player", 0.2, 0.1], "EnemyMelee": [10], "EnemyHealth": [30], "BlockedByObjects": [], "Gravity": [0.1]}},
+        {"kind": "wall", "position": [45, -3, -6], "size": [1.1999999999999984, 4.600000000000001, 3.7000000000000033], "faces": {"left": {"type": "texture", "value": "enemy-chainsaw"}, "back": {"type": "texture", "value": "enemy-chainsaw"}, "right": {"type": "texture", "value": "enemy-chainsaw"}, "front": {"type": "texture", "value": "enemy-chainsaw"}, "top": {"type": "texture", "value": "enemy-chainsaw"}, "bottom": {"type": "texture", "value": "enemy-chainsaw"}}, "behaviors": {"Goto": ["player", 0.12, 0.1], "EnemyMelee": [10], "EnemyHealth": [30], "BlockedByObjects": [], "Gravity": [0.1]}},
+        {"kind": "wall", "position": [170, 3, 0], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "red-door"}, "back": {"type": "texture", "value": "red-door"}, "front": {"type": "texture", "value": "red-door"}, "top": {"type": "texture", "value": "red-door"}}, "name": "door", "behaviors": {"LoadLevel": ["loading.txt"]}},
+        {"kind": "wall", "position": [102.70000000000005, -34.599999999999994, 31], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [153, -19, 1], "size": [5, 5, 5], "faces": {"right": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [157, -19, 1], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [162, -19, 1], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [167, -19, 1], "size": [5, 5, 5], "faces": {"top": {"type": "texture", "value": "rock"}, "left": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [162.90000000000015, -13.600000000000001, 1], "size": [1.1999999999999984, 4.600000000000001, 3.7000000000000033], "faces": {"left": {"type": "texture", "value": "enemy-chainsaw"}, "back": {"type": "texture", "value": "enemy-chainsaw"}, "right": {"type": "texture", "value": "enemy-chainsaw"}, "front": {"type": "texture", "value": "enemy-chainsaw"}, "top": {"type": "texture", "value": "enemy-chainsaw"}, "bottom": {"type": "texture", "value": "enemy-chainsaw"}}, "behaviors": {"Goto": ["player", 0.3, 0.1], "EnemyMelee": [10], "EnemyHealth": [30], "BlockedByObjects": [], "Gravity": [0.1]}},
+        {"kind": "wall", "position": [166.60000000000008, -8, 1], "size": [3, 3, 3], "faces": {"front": {"type": "texture", "value": "ghast-front"}, "right": {"type": "texture", "value": "ghast-front"}, "left": {"type": "texture", "value": "ghast-front"}, "back": {"type": "texture", "value": "ghast-front"}, "top": {"type": "texture", "value": "ghast-front"}, "bottom": {"type": "texture", "value": "ghast-front"}}, "behaviors": {"EnemyHealth": [30], "BlockedByObjects": [], "Spawn": [50, "projectile", [1.0, 1.0, 1.0]]}},
+        {"kind": "wall", "position": [165, 8, 8], "size": [3, 3, 3], "faces": {"front": {"type": "texture", "value": "ghast-front"}, "right": {"type": "texture", "value": "ghast-front"}, "left": {"type": "texture", "value": "ghast-front"}, "back": {"type": "texture", "value": "ghast-front"}, "top": {"type": "texture", "value": "ghast-front"}, "bottom": {"type": "texture", "value": "ghast-front"}}, "behaviors": {"EnemyHealth": [30], "BlockedByObjects": [], "Spawn": [50, "projectile", [1.0, 1.0, 1.0]]}},
+        {"kind": "wall", "position": [167, 1, -6], "size": [1.1999999999999984, 4.600000000000001, 3.7000000000000033], "faces": {"left": {"type": "texture", "value": "enemy-chainsaw"}, "back": {"type": "texture", "value": "enemy-chainsaw"}, "right": {"type": "texture", "value": "enemy-chainsaw"}, "front": {"type": "texture", "value": "enemy-chainsaw"}, "top": {"type": "texture", "value": "enemy-chainsaw"}, "bottom": {"type": "texture", "value": "enemy-chainsaw"}}, "behaviors": {"Goto": ["player", 0.3, 0.1], "EnemyMelee": [10], "EnemyHealth": [30], "BlockedByObjects": [], "Gravity": [0.1]}},
+        {"kind": "wall", "position": [130.09999999999997, 5.800000000000001, -2.999999999999999], "size": [1.1999999999999984, 4.600000000000001, 3.7000000000000033], "faces": {"left": {"type": "texture", "value": "enemy-chainsaw"}, "back": {"type": "texture", "value": "enemy-chainsaw"}, "right": {"type": "texture", "value": "enemy-chainsaw"}, "front": {"type": "texture", "value": "enemy-chainsaw"}, "top": {"type": "texture", "value": "enemy-chainsaw"}, "bottom": {"type": "texture", "value": "enemy-chainsaw"}}, "name": "roofman", "behaviors": {"Goto": ["player", 0.3, 0.1, 30], "EnemyMelee": [10], "EnemyHealth": [30], "BlockedByObjects": [], "Gravity": [0.1]}},
+        {"kind": "wall", "position": [121, 8, -9], "size": [3, 3, 3], "faces": {"front": {"type": "texture", "value": "ghast-front"}, "right": {"type": "texture", "value": "ghast-front"}, "left": {"type": "texture", "value": "ghast-front"}, "back": {"type": "texture", "value": "ghast-front"}, "top": {"type": "texture", "value": "ghast-front"}, "bottom": {"type": "texture", "value": "ghast-front"}}, "behaviors": {"EnemyHealth": [30], "BlockedByObjects": [], "Spawn": [50, "projectile", [1.0, 1.0, 1.0]]}},
+        {"kind": "wall", "position": [-2, -2.600000000000001, -1], "size": [2, 2, 2], "faces": {"left": {"type": "texture", "value": "ammo"}, "right": {"type": "texture", "value": "ammo"}, "bottom": {"type": "texture", "value": "ammo"}, "top": {"type": "texture", "value": "ammo"}, "back": {"type": "texture", "value": "ammo"}, "front": {"type": "texture", "value": "ammo"}}, "behaviors": {"Item": ["Pistol", 15, "ammo-pickup"]}},
+        {"kind": "wall", "position": [167, -15.499999999999995, 1], "size": [2, 2, 2], "faces": {"left": {"type": "texture", "value": "ammo"}, "right": {"type": "texture", "value": "ammo"}, "bottom": {"type": "texture", "value": "ammo"}, "top": {"type": "texture", "value": "ammo"}, "back": {"type": "texture", "value": "ammo"}, "front": {"type": "texture", "value": "ammo"}}, "behaviors": {"Item": ["Pistol", 15, "ammo-pickup"]}},
+        {"kind": "wall", "position": [163.20000000000005, -30.500000000000014, -4], "size": [2, 2, 2], "faces": {"left": {"type": "texture", "value": "ammo"}, "right": {"type": "texture", "value": "ammo"}, "bottom": {"type": "texture", "value": "ammo"}, "top": {"type": "texture", "value": "ammo"}, "back": {"type": "texture", "value": "ammo"}, "front": {"type": "texture", "value": "ammo"}}, "name": "bigammo", "behaviors": {"Item": ["Pistol", 15, "ammo-pickup"]}},
+        {"kind": "wall", "position": [105, -29.1, 31], "size": [2, 2, 2], "faces": {"left": {"type": "texture", "value": "health"}, "right": {"type": "texture", "value": "health"}, "bottom": {"type": "texture", "value": "health"}, "top": {"type": "texture", "value": "health"}, "back": {"type": "texture", "value": "health"}, "front": {"type": "texture", "value": "health"}}, "name": "health", "behaviors": {"HealthPickup": [50]}},
+        {"kind": "wall", "position": [130, 4.400000000000001, 7], "size": [2, 2, 2], "faces": {"left": {"type": "texture", "value": "ammo"}, "right": {"type": "texture", "value": "ammo"}, "bottom": {"type": "texture", "value": "ammo"}, "top": {"type": "texture", "value": "ammo"}, "back": {"type": "texture", "value": "ammo"}, "front": {"type": "texture", "value": "ammo"}}, "behaviors": {"Item": ["Pistol", 15, "ammo-pickup"]}},
+        {"kind": "wall", "position": [171.8, 11.500000000000005, 0], "size": [2, 2, 2], "faces": {"left": {"type": "texture", "value": "health"}, "right": {"type": "texture", "value": "health"}, "bottom": {"type": "texture", "value": "health"}, "top": {"type": "texture", "value": "health"}, "back": {"type": "texture", "value": "health"}, "front": {"type": "texture", "value": "health"}}, "name": "health", "behaviors": {"HealthPickup": [50]}},
+        {"kind": "wall", "position": [52.19999999999999, 2.4999999999999987, 4], "size": [2, 2, 2], "faces": {"left": {"type": "texture", "value": "ammo"}, "right": {"type": "texture", "value": "ammo"}, "bottom": {"type": "texture", "value": "ammo"}, "top": {"type": "texture", "value": "ammo"}, "back": {"type": "texture", "value": "ammo"}, "front": {"type": "texture", "value": "ammo"}}, "behaviors": {"Item": ["Pistol", 15, "ammo-pickup"]}},
+        {"kind": "wall", "position": [173, 20.500000000000007, -15], "size": [3.2, 2.0, 2.6], "faces": {"left": {"type": "texture", "value": "ghast-front"}, "right": {"type": "texture", "value": "ghast-front"}, "bottom": {"type": "texture", "value": "ghast-front"}, "top": {"type": "texture", "value": "ghast-front"}, "back": {"type": "texture", "value": "ghast-front"}, "front": {"type": "texture", "value": "ghast-front"}}, "behaviors": {"EnemyHealth": [30], "Spawn": [50, "projectile", [1.0, 1.0, 1.0]]}},
+        {"kind": "wall", "position": [145, 0, 12], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [143, 1, 12], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [140, 2, 12], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [137, 1, 11], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [124, 3, 12], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "rock"}, "right": {"type": "texture", "value": "rock"}, "bottom": {"type": "texture", "value": "rock"}, "top": {"type": "texture", "value": "rock"}, "back": {"type": "texture", "value": "rock"}, "front": {"type": "texture", "value": "rock"}}, "behaviors": {}},
+        {"kind": "wall", "position": [53, -31, 30], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "ghast-front"}, "right": {"type": "texture", "value": "ghast-front"}, "bottom": {"type": "texture", "value": "ghast-front"}, "top": {"type": "texture", "value": "ghast-front"}, "back": {"type": "texture", "value": "ghast-front"}, "front": {"type": "texture", "value": "ghast-front"}}, "behaviors": {"EnemyHealth": [30], "Spawn": [50, "projectile", [1.0, 1.0, 1.0]]}},
+        {"kind": "wall", "position": [63, -31, -33], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "ghast-front"}, "right": {"type": "texture", "value": "ghast-front"}, "bottom": {"type": "texture", "value": "ghast-front"}, "top": {"type": "texture", "value": "ghast-front"}, "back": {"type": "texture", "value": "ghast-front"}, "front": {"type": "texture", "value": "ghast-front"}}, "behaviors": {"EnemyHealth": [30], "Spawn": [50, "projectile", [1.0, 1.0, 1.0]]}},
+        {"kind": "wall", "position": [64, 32, -2], "size": [5, 5, 5], "faces": {"left": {"type": "texture", "value": "ghast-front"}, "right": {"type": "texture", "value": "ghast-front"}, "bottom": {"type": "texture", "value": "ghast-front"}, "top": {"type": "texture", "value": "ghast-front"}, "back": {"type": "texture", "value": "ghast-front"}, "front": {"type": "texture", "value": "ghast-front"}}, "behaviors": {"EnemyHealth": [30], "Spawn": [50, "projectile", [1.0, 1.0, 1.0]]}}
     ]
 }

@@ -24,7 +24,7 @@ class PlayerView:
         self.player = None
         self.clock = pygame.time.Clock()
         self.camera_direction = [0.0, 0.0, -1.0]
-        self.scale = 2
+        self.scale = 5
 
         self.edit_mode = False
         self.position_mode = False
@@ -49,7 +49,11 @@ class PlayerView:
         self.setup()
 
     def delete_game_object(self, game_object):
-        del self.view_objects[game_object.id]
+        try:
+            del self.view_objects[game_object.id]
+        except KeyError:
+            print("KeyError occured")
+            pass
 
     def tick(self):
         if not self.textures:
@@ -103,7 +107,6 @@ class PlayerView:
 
                     if event.key == pygame.K_l:
                         # change language
-                        print("pressed l")
                         self.change_language()
 
                     if event.key == pygame.K_SPACE:
@@ -154,11 +157,11 @@ class PlayerView:
                         print("Size adjust amt: " + str(self.size_adjust_amt))
 
                     if event.key == pygame.K_UP and self.position_mode:
-                        self.size_adjust_amt += 0.5
+                        self.position_adjust_amt += 0.5
                         print("Position adjust amt: " + str(self.position_adjust_amt))
 
                     if event.key == pygame.K_DOWN and self.position_mode:
-                        self.size_adjust_amt -= 0.5
+                        self.position_adjust_amt -= 0.5
                         print("Position adjust amt: " + str(self.position_adjust_amt))
 
             if not self.paused:
@@ -511,7 +514,7 @@ class PlayerView:
         elif game_object.kind == "ground":
             self.view_objects[game_object.id] = ObjectGround(game_object)
 
-        elif game_object.kind == "wall":
+        elif game_object.kind == "wall" or game_object.kind == "weapon":
             self.view_objects[game_object.id] = ObjectWall(game_object)
 
         elif game_object.kind == "sidewall":
@@ -519,7 +522,7 @@ class PlayerView:
 
         elif game_object.kind == "move":
             self.view_objects[game_object.id] = CubeView(game_object)
-            
+
         elif game_object.kind == "player":
             self.player = game_object
 
@@ -579,8 +582,13 @@ class PlayerView:
 
             if self.apply_texture:
                 print("apply texture")
-                for face in self.get_faces(closest):
+
+                for face in self.get_all_faces(closest):
                     closest.faces[face] = {'type': 'texture', 'value': self.textures[self.current_texture]}
+
+                #for face in self.get_faces(closest):
+                    # closest.faces[face] = {'type': 'texture', 'value': self.textures[self.current_texture]}
+                    #face = {'type': 'texture', 'value': self.textures[self.current_texture]}
 
             if self.clear_texture:
                 print("clear texture")
@@ -654,7 +662,32 @@ class PlayerView:
                 results.append('front')
 
             return results
-        
+
+    def get_all_faces(self, game_object):
+        camera_direction = numpy.array(self.camera_direction)
+        current = numpy.array(self.player.position)
+
+        mypos = current + 1.5 * camera_direction
+
+        otherpos = numpy.array(game_object.position)
+        distance = numpy.linalg.norm(mypos - otherpos)
+        direction_vector = (mypos - otherpos) / distance
+
+        max_direction = max(direction_vector, key=abs)
+        indices = [i for i, j in enumerate(direction_vector) if j == max_direction]
+
+        results = []
+
+        results.append('left')
+        results.append('right')
+        results.append('bottom')
+        results.append('top')
+
+        results.append('back')
+        results.append('front')
+
+        return results
+
     def clear_objects(self):
         self.view_objects = {}
 

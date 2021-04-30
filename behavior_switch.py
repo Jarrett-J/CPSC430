@@ -10,7 +10,9 @@ class Switch(Behavior):
         self.setname = setname
         self.setvalue = setvalue
 
-    def clicked(self, game_object):
-        print("switch clicked")
+    def activated(self, game_object):
+        # print("switch activated")
+        # print("name: " + self.name)
+        # print("value: " + self.value)
         if game_object.get_property(self.name) == self.value:
             self.game_object.set_property(self.setname, self.setvalue)

@@ -2,11 +2,17 @@
     "en": {
         "Vehicles: ": "Vehicles: ",
 		"Car": "Car",
-		"Truck": "Truck"
+		"Truck": "Truck",
+		"Health: ": "Health: ",
+		"Ammo: ": "Ammo: ",
+		"Melee": "Melee"
     },
     "es": {
         "Vehicles: ": "Vehiculos: ",
         "Car": "Coche",
-		"Truck": "Camion"
+		"Truck": "Camion",
+        "Health: ": "Salud: ",
+		"Ammo: ": "Municion: ",
+		"Melee": "Punetazo"
     }
 }

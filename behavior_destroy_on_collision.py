@@ -18,5 +18,4 @@ class DestroyOnCollision(Behavior):
                     return
                 else:
                     self.destroying = True
-                    print("Collided with " + str(other.kind))
                     GameLogic.delete_object(self.game_object)

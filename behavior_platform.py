@@ -2,14 +2,16 @@ from behavior import Behavior
 from game_logic import GameLogic
 import numpy
 
+
 class Platform(Behavior):
-    def __init__(self, finish, speed, transport):
+    def __init__(self, finish, speed, transport, can_move=True):
         super(Platform, self).__init__()
 
         self.start = None
         self.finish = numpy.array(finish)
         self.speed = speed
         self.transport = transport
+        self.can_move = can_move
 
     def connect(self, game_object):
         super(Platform, self).connect(game_object)
@@ -19,6 +21,9 @@ class Platform(Behavior):
         self.direction_vector = (self.finish - self.start) / self.distance
 
     def tick(self):
+        if not self.can_move:
+            return
+
         current = numpy.array(self.game_object.position)
         distance = numpy.linalg.norm(self.start-current)
 

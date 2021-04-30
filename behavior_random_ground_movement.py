@@ -3,7 +3,7 @@ from behavior import Behavior
 
 
 class RandomGroundMovement(Behavior):
-    def __init__(self, speed):
+    def __init__(self, speed, x, y, z):
         super(RandomGroundMovement, self).__init__()
         self.can_move = True
         self.speed = speed
@@ -17,16 +17,18 @@ class RandomGroundMovement(Behavior):
         self.max_move_cooldown = 100
 
         # the amount moved
-        self.x = self.speed
-        self.y = 0
-        self.z = self.speed
+        self.x = x * speed
+        self.y = y * speed
+        self.z = z * speed
 
         # the direction moved
         self.x_direction = 0
+        self.y_direction = 0
         self.z_direction = 0
 
     def randomize_direction(self):
         self.x_direction = random.randint(-1, 1)
+        self.y_direction = random.randint(-1, 1)
         self.z_direction = random.randint(-1, 1)
 
         # print("New x direction: " + str(self.x_direction))
@@ -35,11 +37,14 @@ class RandomGroundMovement(Behavior):
     def tick(self):
         if self.can_move:
             if self.current_move_cooldown <= 0:
+
                 x_movement = self.x * self.x_direction
+                y_movement = self.x * self.y_direction
                 z_movement = self.z * self.z_direction
 
                 # move
                 self.game_object.position[0] += x_movement
+                self.game_object.position[1] += y_movement
                 self.game_object.position[2] += z_movement
                 self.game_object._moved = True
 

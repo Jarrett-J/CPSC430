@@ -17,7 +17,7 @@ class Spawn(Behavior):
                          "left": {"type": "texture", "value": "lava"}, "top": {"type": "texture", "value": "lava"},
                          "back": {"type": "texture", "value": "lava"}, "bottom": {"type": "texture", "value": "lava"}}
 
-        self.speed = 0.3
+        self.speed = 2
 
     def get_projectile_type(self):
         if self.kind == "heatseeking":

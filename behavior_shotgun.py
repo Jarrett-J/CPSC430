@@ -11,6 +11,7 @@ class Shotgun(Behavior):
         self.max_cooldown = 80
         self.current_cooldown = 0
         self.reloading = False
+        self.has_weapon = False
 
     def shoot(self):
         if self.reloading:

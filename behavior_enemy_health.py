@@ -10,12 +10,14 @@ class EnemyHealth(Behavior):
         self.sound = "sounds/enemy-hit-1.wav"
         
     def clicked(self, game_object):
-        self.health -= 10
-        print("Health: " + str(self.health))
-        if self.sound:
-            Sounds.play_sound(self.sound)
+        if game_object.kind == "player":
+            damage = game_object.get_behavior("Shoot").damage
 
-        if self.health <= 0:
-            # play death sound
+            self.health -= damage
+            if self.sound:
+                Sounds.play_sound(self.sound)
 
-            GameLogic.delete_object(self.game_object)
+            if self.health <= 0:
+                # play death sound
+
+                GameLogic.delete_object(self.game_object)

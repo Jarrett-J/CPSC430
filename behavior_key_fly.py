@@ -8,6 +8,7 @@ class KeyFly(Behavior):
     def __init__(self, speed):
         super(KeyFly, self).__init__()
         self.speed = speed
+        self.speed = 1
         
         pub.subscribe(self.key_w, 'key-w')
         pub.subscribe(self.key_s, 'key-s')

@@ -11,7 +11,7 @@ class GameLogic:
     files = {}
     level_data = {}
     filename = None
-
+    current_level = None
     deletions = []
     additions = []
     next_id = 0
@@ -63,12 +63,16 @@ class GameLogic:
     def process_deletions():
         for obj in GameLogic.deletions:
             if obj.name:
-                del GameLogic.name_index[obj.name]
+                try:
+                    del GameLogic.name_index[obj.name]
+                except KeyError:
+                    # print("KeyError in process_deletions()")
+                    pass
 
             try:
                 del GameLogic.game_objects[obj.id]
             except KeyError:
-                print("KeyError in process_deletions()")
+                # print("KeyError in process_deletions()")
                 pass
 
             pub.sendMessage('delete', game_object=obj)
@@ -78,7 +82,6 @@ class GameLogic:
     @staticmethod
     def process_additions():
         for obj in GameLogic.additions:
-            print("adding object: " + str(obj))
             GameLogic.create_object(obj)
 
         GameLogic.additions = []
@@ -95,9 +98,20 @@ class GameLogic:
         return result
 
     @staticmethod
+    def delete_objects():
+        for obj in GameLogic.game_objects:
+            if GameLogic.game_objects[obj].name:
+                if GameLogic.game_objects[obj].name == "player":
+                    continue
+
+            GameLogic.delete_object(GameLogic.game_objects[obj])
+
+    @staticmethod
     def load_world(filename):
         GameLogic.loading_level = True
+        GameLogic.current_level = filename
         pub.sendMessage('clear_view_objects')
+        GameLogic.delete_objects()
 
         GameLogic.game_objects = { }
         GameLogic.filename = filename
@@ -135,6 +149,7 @@ class GameLogic:
             if 'level' in level_data:
                 if 'music' in level_data['level']:
                     from sounds import Sounds
+                    Sounds.stop_music()
                     Sounds.play_music(level_data['level']['music'])
 
     @staticmethod

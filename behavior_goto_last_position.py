@@ -18,6 +18,9 @@ class GotoLastPosition(Behavior):
         self.calculated = False
 
     def calculate_direction(self, destination):
+        if not destination:
+            return
+
         current = numpy.array(self.game_object.position)
         distance = numpy.linalg.norm(destination - current)
         direction_vector = (destination - current) / distance

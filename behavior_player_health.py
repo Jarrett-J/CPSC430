@@ -1,6 +1,7 @@
 from pubsub import pub
 
 from behavior import Behavior
+from game_logic import GameLogic
 from sounds import Sounds
 
 
@@ -11,18 +12,15 @@ class PlayerHealth(Behavior):
         self.sound = sound
 
     def hit_player(self, damage):
-        print("Player took a hit")
-
         self.health -= damage
         pub.sendMessage("player-damage")
 
-        print("Health: " + str(self.health))
         if self.sound:
             Sounds.play_sound(self.sound)
 
         if self.health <= 0:
             print("Player died")
-            # play death sound
-            # restart level
-            # prohibit control
+            GameLogic.load_world(GameLogic.current_level)
+            pub.sendMessage('refresh-text')
+            pub.sendMessage('refresh-health')
             pass

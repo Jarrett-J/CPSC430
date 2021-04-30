@@ -10,8 +10,10 @@ class Main:
         self.instances.append(PlayerView())
 
     def go(self):
-        GameLogic.load_world("level_editor.txt")
-        # GameLogic.load_world("level_1.txt")
+        # starting level
+        # GameLogic.load_world("splash-screen.txt")
+
+        GameLogic.load_world("level_1.txt")
 
         while True:
             GameLogic.tick()

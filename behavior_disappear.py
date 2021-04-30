@@ -19,5 +19,4 @@ class Disappear(Behavior):
                 self.sound_played = True
 
     def delete_object(self):
-        print("Disappearing")
         GameLogic.delete_object(self.game_object)

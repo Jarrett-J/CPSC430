@@ -21,3 +21,6 @@ class Behavior:
     
     def clicked(self, game_object):
         pass
+
+    def activated(self, game_object):
+        pass

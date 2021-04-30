@@ -16,7 +16,7 @@ class GotoSupervisor(Behavior):
         pub.subscribe(self.process_event, self.event)
 
     def process_event(self, game_object):
-        print("sending event " + str(self.steps[self.next_step][0]) + ", " + str(self.game_object) )
+        # print("sending event " + str(self.steps[self.next_step][0]) + ", " + str(self.game_object) )
         pub.sendMessage(self.steps[self.next_step][0], game_object=self.game_object)
 
         if len(self.steps[self.next_step]) > 1:

@@ -7,6 +7,8 @@ class BlockedByObjects(Behavior):
         super(BlockedByObjects, self).__init__()
         self.ignore = ignore_kind
 
+        self.push_amount = .3
+
     def tick(self):
         if self.game_object.collisions:
             mypos = numpy.array(self.game_object.position)
@@ -17,6 +19,10 @@ class BlockedByObjects(Behavior):
 
                 otherpos = numpy.array(other.position)
                 distance = numpy.linalg.norm(mypos - otherpos)
+
+                if distance == 0:
+                    return
+
                 direction_vector = (mypos - otherpos) / distance
 
                 max_direction = max(direction_vector, key=abs)
@@ -24,18 +30,18 @@ class BlockedByObjects(Behavior):
 
                 velocity = 0.0
 
+                if not indices:
+                    return
+
                 for index in indices:
 
                     if index == 0:
-                        velocity = max(velocity, self.game_object.get_property('x_velocity', 0.1))
+                        velocity = max(velocity, self.game_object.get_property('x_velocity', self.push_amount))
                     if index == 1:
-                        velocity = max(velocity, self.game_object.get_property('y_velocity', 0.1))
+                        velocity = max(velocity, self.game_object.get_property('y_velocity', self.push_amount))
                     if index == 2:
-                        velocity = max(velocity, self.game_object.get_property('z_velocity', 0.1))
+                        velocity = max(velocity, self.game_object.get_property('z_velocity', self.push_amount))
 
-                #print("id: " + str(self.game_object.id))
-                #print("kind: " + str(self.game_object.kind))
-                #print("behaviors: " + str(self.game_object.behaviors))
 
                 face = indices[0]
                 thirdpos = numpy.array([0.0, 0.0, 0.0])

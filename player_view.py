@@ -342,6 +342,9 @@ class PlayerView:
         closest.activated(self.player)
 
     def handle_click(self, pos):
+        if self.splashscreen:
+            return
+
         # fixes fps issues
         if self.selected_weapon == 1 and self.player.get_behavior("Melee").reloading:
             return

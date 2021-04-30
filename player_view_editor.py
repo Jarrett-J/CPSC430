@@ -52,7 +52,7 @@ class PlayerView:
         try:
             del self.view_objects[game_object.id]
         except KeyError:
-            print("KeyError occured")
+            # print("KeyError occured")
             pass
 
     def tick(self):

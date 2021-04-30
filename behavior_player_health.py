@@ -19,7 +19,7 @@ class PlayerHealth(Behavior):
             Sounds.play_sound(self.sound)
 
         if self.health <= 0:
-            print("Player died")
+            # print("Player died")
             GameLogic.load_world(GameLogic.current_level)
             pub.sendMessage('refresh-text')
             pub.sendMessage('refresh-health')

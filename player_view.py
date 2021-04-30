@@ -55,7 +55,8 @@ class PlayerView:
         try:
             del self.view_objects[game_object.id]
         except KeyError:
-            print("KeyError occured")
+            pass
+            # print("KeyError occured")
 
     def tick(self):
         mouseMove = (0, 0)

@@ -26,7 +26,7 @@ class Movies:
 
     @staticmethod
     def play_movie(tag, loop=False):
-        print("playing movie")
+        # print("playing movie")
         if tag in Movies.movies:
             Movies.movies[tag]['paused'] = False
         else:

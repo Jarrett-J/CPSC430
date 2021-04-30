@@ -34,7 +34,6 @@ language = Localize.get
 
 #print(_("Clicks: "))
 
-# TODO build file with translations
 # render(_("Clicks: ") + str(clicks))
 
 Localize.load()

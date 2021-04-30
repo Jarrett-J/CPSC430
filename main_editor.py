@@ -11,7 +11,7 @@ class Main:
         self.instances.append(PlayerView())
 
     def go(self):
-        GameLogic.load_world("level_1.txt")
+        GameLogic.load_world("level_2.txt")
         
         while True:
             GameLogic.tick()

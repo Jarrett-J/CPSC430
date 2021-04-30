@@ -11,9 +11,9 @@ class Main:
 
     def go(self):
         # starting level
-        # GameLogic.load_world("splash-screen.txt")
+        GameLogic.load_world("splash-screen.txt")
 
-        GameLogic.load_world("level_1.txt")
+        #GameLogic.load_world("level_2.txt")
 
         while True:
             GameLogic.tick()

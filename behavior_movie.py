@@ -15,7 +15,6 @@ class Movie(Behavior):
         pub.subscribe(self.stop, stopevent)
 
     def play(self):
-        print("play")
         Movies.play_movie(self.movie, self.loop)
 
     def pause(self):

@@ -34,6 +34,7 @@ class PlayerView:
         pub.subscribe(self.set_health_text, 'refresh-health')
         pub.subscribe(self.set_health_text, 'player-damage')
         pub.subscribe(self.toggle_splash, 'splash')
+        pub.subscribe(self.new_level_weapon, 'clear_view_objects')
 
         self.setup()
         global ammo_texture
@@ -42,6 +43,9 @@ class PlayerView:
         global texID
         ammo_texture = None
         health_texture = None
+        self.selected_weapon = 1
+
+    def new_level_weapon(self):
         self.selected_weapon = 1
 
     def toggle_splash(self):
